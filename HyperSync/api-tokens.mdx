@@ -1,0 +1,97 @@
+---
+title: API Tokens
+description: Learn how to generate and use HyperSync API tokens for secure access.
+---
+
+## Overview
+
+API tokens provide authenticated access to HyperSync services, enabling enhanced capabilities and usage tracking.
+
+HyperSync implements **rate limits for requests without API tokens**. API tokens will be required from **3 November 2025**. Indexers deployed to our hosted service will have special access to HyperSync that does not require a custom API token.
+
+## Table of Contents
+
+<CardGroup cols={2}>
+<Card title="Generating API Tokens" icon="key" href="#generating-api-tokens">
+Create your API token through the Envio Dashboard
+</Card>
+<Card title="Implementation Guide" icon="code" href="#implementation-guide">
+Integrate tokens into your applications
+</Card>
+<Card title="Understanding Usage" icon="chart-line" href="#understanding-usage">
+Track your API token usage and credits
+</Card>
+<Card title="Security Best Practices" icon="shield" href="#security-best-practices">
+Keep your tokens safe and secure
+</Card>
+</CardGroup>
+
+## Generating API Tokens
+
+<Steps>
+<Step title="Visit the Envio Dashboard">
+Navigate to [https://envio.dev/app/api-tokens](https://envio.dev/app/api-tokens)
+</Step>
+<Step title="Sign in to your account">
+Sign in to your account (or create one if you don't have one)
+</Step>
+<Step title="Create a new token">
+Follow the prompts to create a new token
+</Step>
+<Step title="Store your token securely">
+Copy and securely store your token in a safe location
+</Step>
+</Steps>
+
+## Implementation Guide
+
+To use an API token, pass it as a `bearer_token` when creating a HyperSync client:
+
+<CodeGroup>
+```typescript icon="/icons/typescript-icon.png" title="TypeScript/JavaScript"
+const client = HypersyncClient.new({
+  url: "https://eth.hypersync.xyz",
+  bearerToken: process.env.HYPERSYNC_BEARER_TOKEN,
+});
+```
+
+```python icon="/icons/python-icon.png" title="Python"
+client = hypersync.HypersyncClient(hypersync.ClientConfig(
+    url="https://eth.hypersync.xyz",
+    bearer_token=os.environ.get("HYPERSYNC_BEARER_TOKEN")
+))
+```
+
+```rust icon="/icons/rust-icon.png" title="Rust"
+let client = Client::new(ClientConfig {
+    bearer_token: Some(std::env::var("HYPERSYNC_BEARER_TOKEN").unwrap_or_default()),
+    ..Default::default()
+})
+.unwrap();
+```
+</CodeGroup>
+
+## Understanding Usage
+
+To understand your current month's usage, visit [https://envio.dev/app/api-tokens](https://envio.dev/app/api-tokens). Usage is composed of two main components:
+
+- **Number of Requests**: The total count of API requests made.
+- **Credits**: A comprehensive calculation that takes into account multiple factors including data bandwidth, disk read operations, and other resource utilization metrics. This provides the most accurate representation of actual service usage. We're happy to provide more detailed breakdowns of the credit calculation upon request.
+
+## Security Best Practices
+
+When working with API tokens:
+
+- **Never commit tokens to git repositories**
+- **Use environment variables** to store tokens instead of hardcoding
+- **Add token files like `.env` to your `.gitignore`**
+- **Rotate tokens periodically** for enhanced security
+- **Limit token sharing** to only those who require access
+
+```bash icon="terminal" title=".env"
+# Example .env file
+HYPERSYNC_BEARER_TOKEN=your_secret_token_here
+```
+
+This approach keeps your tokens secure while making them available to your application at runtime.
+

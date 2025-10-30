@@ -1,0 +1,238 @@
+---
+title: "Client Libraries"
+description: "Explore HyperSync clients for fast blockchain data access in Node.js, Python, Rust, and Go."
+---
+
+HyperSync provides powerful client libraries that enable you to integrate high-performance blockchain data access into your applications. These libraries handle the communication with HyperSync servers, data serialization/deserialization, and provide convenient APIs for querying blockchain data.
+
+## Quick Links
+
+<div style={{display: 'flex', justifyContent: 'center'}}>
+<Card>
+
+| Client               | Resources                                                                                                                                                                                                                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Node.js**          | [📝 API Docs](https://enviodev.github.io/hypersync-client-node/) · [📦 NPM](https://www.npmjs.com/package/@envio-dev/hypersync-client) · [💻 GitHub](https://github.com/enviodev/hypersync-client-node) · [🧪 Examples](https://github.com/enviodev/hypersync-client-node/tree/main/examples) |
+| **Python**           | [📦 PyPI](https://pypi.org/project/hypersync/) · [💻 GitHub](https://github.com/enviodev/hypersync-client-python) · [🧪 Examples](https://github.com/enviodev/hypersync-client-python/tree/main/examples)                                                                                     |
+| **Rust**             | [📦 Crates.io](https://crates.io/crates/hypersync-client) · [📝 API Docs](https://docs.rs/hypersync-client/latest/hypersync_client/) · [💻 GitHub](https://github.com/enviodev/hypersync-client-rust) · [🧪 Examples](https://github.com/enviodev/hypersync-client-rust/tree/main/examples)   |
+| **Go** _(community)_ | [💻 GitHub](https://github.com/enviodev/hypersync-client-go) · [🧪 Examples](https://github.com/enviodev/hypersync-client-go/tree/main/examples)                                                                                                                                              |
+| **API Tokens**       | [🔑 Get Tokens](/HyperSync/api-tokens)                                                                                                                                                                                                                                                             |
+
+</Card>
+</div>
+
+## Client Overview
+
+All HyperSync clients share these key features:
+
+<CardGroup cols={2}>
+  <Card title="High Performance" icon="bolt">
+    Built on a common Rust foundation for maximum efficiency
+  </Card>
+  <Card title="Optimized Transport" icon="arrows-left-right-to-line">
+    Uses binary formats to minimize bandwidth and maximize throughput
+  </Card>
+  <Card title="Consistent Experience" icon="circle-check">
+    Similar APIs across all language implementations
+  </Card>
+  <Card title="Automatic Pagination" icon="bars-staggered">
+    Handles large data sets efficiently
+  </Card>
+  <Card title="Event Decoding" icon="code">
+    Parses binary event data into structured formats
+  </Card>
+</CardGroup>
+
+Choose the client that best matches your application's technology stack:
+
+<div style={{display: 'flex', justifyContent: 'center'}}>
+<Card>
+
+| Feature           | Node.js       | Python             | Rust          | Go            |
+| ----------------- | ------------- | ------------------ | ------------- | ------------- |
+| Async Support     | ✅            | ✅                 | ✅            | ✅            |
+| Typing            | TypeScript    | Type Hints         | Native        | Native        |
+| Data Formats      | JSON, Parquet | JSON, Parquet, CSV | JSON, Parquet | JSON, Parquet |
+| Memory Efficiency | Good          | Better             | Best          | Better        |
+| Installation      | npm           | pip                | cargo         | go get        |
+
+</Card>
+</div>
+
+## Node.js Client
+
+<Info>
+**Resources**
+
+- [📝 API Documentation](https://enviodev.github.io/hypersync-client-node/)
+- [📦 NPM Package](https://www.npmjs.com/package/@envio-dev/hypersync-client)
+- [💻 GitHub Repository](https://github.com/enviodev/hypersync-client-node)
+- [🧪 Example Projects](https://github.com/enviodev/hypersync-client-node/tree/main/examples)
+</Info>
+
+The Node.js client provides a TypeScript-first experience for JavaScript developers.
+
+### Installation
+
+```bash icon="terminal" title="terminal"
+# Using npm
+npm install @envio-dev/hypersync-client
+
+# Using yarn
+yarn add @envio-dev/hypersync-client
+
+# Using pnpm
+pnpm add @envio-dev/hypersync-client
+```
+
+## Python Client
+
+<Info>
+**Resources**
+
+- [📦 PyPI Package](https://pypi.org/project/hypersync/)
+- [💻 GitHub Repository](https://github.com/enviodev/hypersync-client-python)
+- [🧪 Example Projects](https://github.com/enviodev/hypersync-client-python/tree/main/examples)
+</Info>
+
+The Python client provides a Pythonic interface with full type hinting support.
+
+### Installation
+
+```bash icon="terminal" title="terminal"
+pip install hypersync
+```
+
+## Rust Client
+
+<Info>
+**Resources**
+
+- [📦 Crates.io Package](https://crates.io/crates/hypersync-client)
+- [📝 API Documentation](https://docs.rs/hypersync-client/latest/hypersync_client/)
+- [💻 GitHub Repository](https://github.com/enviodev/hypersync-client-rust)
+- [🧪 Example Projects](https://github.com/enviodev/hypersync-client-rust/tree/main/examples)
+</Info>
+
+The Rust client provides the most efficient and direct access to HyperSync, with all the safety and performance benefits of Rust.
+
+### Installation
+
+Add the following to your `Cargo.toml`:
+
+```toml icon="/icons/rust-icon.png" title="Cargo.toml"
+[dependencies]
+hypersync-client = "0.1"
+tokio = { version = "1", features = ["full"] }
+```
+
+## Go Client
+
+<Info>
+**Resources**
+
+- [💻 GitHub Repository](https://github.com/enviodev/hypersync-client-go)
+- [🧪 Example Projects](https://github.com/enviodev/hypersync-client-go/tree/main/examples)
+</Info>
+
+<Warning>
+**Community Maintained**
+
+The Go client is community maintained and marked as work-in-progress. For production use, you may want to test thoroughly or consider the officially supported clients.
+</Warning>
+
+The Go client provides a native Go interface for accessing HyperSync, with support for streaming and decoding blockchain data.
+
+### Installation
+
+```bash icon="terminal" title="terminal"
+go get github.com/enviodev/hypersync-client-go
+```
+
+## Using API Tokens
+
+<Info>
+**Get Your API Token**
+
+You'll need an API token to use any HyperSync client. [Get your token here](/HyperSync/api-tokens).
+</Info>
+
+All HyperSync clients require an API token for authentication. Tokens are used to manage access and usage limits.
+
+To get an API token:
+
+<Steps>
+<Step title="Visit Envio">
+  Navigate to [Envio](https://envio.dev)
+</Step>
+
+<Step title="Sign In">
+  Register or sign in with your GitHub account
+</Step>
+
+<Step title="Navigate to API Tokens">
+  Go to the API Tokens section
+</Step>
+
+<Step title="Create Token">
+  Create a new token
+</Step>
+</Steps>
+
+For detailed instructions, see our [API Tokens](/HyperSync/api-tokens) guide.
+
+## Client Selection Guide
+
+Choose the client that best fits your use case:
+
+<Tip>
+**Node.js Client**
+
+**Choose when**: You're building JavaScript/TypeScript applications or if your team is most comfortable with the JavaScript ecosystem.
+</Tip>
+
+<Tip>
+**Python Client**
+
+**Choose when**: You're doing data science work, need integration with pandas/numpy, or if your team prefers Python's simplicity.
+</Tip>
+
+<Tip>
+**Rust Client**
+
+**Choose when**: You need maximum performance, are doing systems programming, or building performance-critical applications.
+</Tip>
+
+<Tip>
+**Go Client**
+
+**Choose when**: You're working in a Go ecosystem and want native integration with Go applications. Note that this client is community maintained.
+</Tip>
+
+## Additional Resources
+
+<CardGroup cols={2}>
+  <Card title="Usage Guide" href="/HyperSync/hypersync-usage" icon="book">
+    Complete guide to using HyperSync
+  </Card>
+  <Card title="Query Reference" href="/HyperSync/hypersync-query" icon="magnifying-glass">
+    Advanced query documentation
+  </Card>
+  <Card title="cURL Examples" href="/HyperSync/hypersync-curl-examples" icon="terminal">
+    Test queries with cURL
+  </Card>
+  <Card title="Supported Networks" href="/HyperSync/hypersync-supported-networks" icon="network-wired">
+    See all supported chains
+  </Card>
+</CardGroup>
+
+## Support
+
+Need help getting started or have questions about our clients? Connect with our community:
+
+<CardGroup cols={3}>
+  <Card title="Discord Community" href="https://discord.gg/Q9qt8gZ2fX" icon="discord" />
+  <Card title="GitHub Issues" href="https://github.com/enviodev" icon="github" />
+  <Card title="Documentation Feedback" href="https://github.com/enviodev/docs/issues" icon="message" />
+</CardGroup>
+
