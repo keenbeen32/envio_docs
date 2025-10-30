@@ -1,0 +1,77 @@
+---
+title: Preset Queries
+description: Explore ready-to-use HyperSync query presets to fetch blocks, transactions, and logs efficiently.
+---
+
+HyperSync's client libraries include helper functions that build common queries. These presets are useful when you need raw blockchain objects without crafting a query manually.
+
+Each preset returns a `Query` object so you can pass it directly to `client.get`, `client.stream`, or `client.collect`.
+
+## Available Presets
+
+<CardGroup cols={2}>
+<Card title="Blocks and Transactions" icon="cubes" iconType="duotone">
+Returns every block and all associated transactions within the block range
+</Card>
+<Card title="Blocks and Transaction Hashes" icon="hashtag" iconType="duotone">
+Returns each block with only the transaction hashes
+</Card>
+<Card title="Get Logs" icon="file-lines" iconType="duotone">
+Fetches all logs emitted by specific contract addresses
+</Card>
+<Card title="All Logs" icon="list" iconType="duotone">
+Fetches every log across the specified blocks
+</Card>
+<Card title="Logs of Event" icon="filter" iconType="duotone">
+Fetches logs for a specific event signature
+</Card>
+</CardGroup>
+
+### `preset_query_blocks_and_transactions(from_block, to_block)`
+
+Returns every block and all associated transactions within the supplied block range.
+
+```python icon="/icons/python-icon.png" title="preset_query_blocks_and_transactions.py"
+import hypersync
+import asyncio
+
+async def main():
+    client = hypersync.HypersyncClient(hypersync.ClientConfig())
+
+    query = hypersync.preset_query_blocks_and_transactions(17_000_000, 17_000_050)
+    result = await client.get(query)
+    print(f"Query returned {len(result.data.blocks)} blocks and {len(result.data.transactions)} transactions")
+
+asyncio.run(main())
+```
+
+### `preset_query_blocks_and_transaction_hashes(from_block, to_block)`
+
+Returns each block in the range along with only the transaction hashes.
+
+### `preset_query_get_logs(addresses, from_block, to_block)`
+
+Fetches all logs emitted by the provided contract addresses in the given block range.
+
+```python icon="/icons/python-icon.png" title="preset_query_get_logs.py"
+logs_res = await client.get(
+    hypersync.preset_query_get_logs(["0xYourContract"], 17_000_000, 17_000_050)
+)
+```
+
+### `preset_query_logs(from_block, to_block)`
+
+Fetches every log across the specified blocks.
+
+### `preset_query_logs_of_event(event_signature, from_block, to_block)`
+
+Fetches logs for the specified event signature over the block range.
+
+<Info>
+**Language Support**
+
+Client libraries for other languages expose the same presets under similar names. See the [Python](https://github.com/enviodev/hypersync-client-python) and [Node.js](https://github.com/enviodev/hypersync-client-node) example repositories for more details.
+</Info>
+
+Use these helpers whenever you need a quick query without specifying field selections or joins manually.
+
