@@ -53,7 +53,7 @@
             ]
           },
           {
-            "group": "Hosting",
+            "group": "Hosted Service",
             "pages": [
               "HyperIndex/Hosted_Service/hosted-service",
               "HyperIndex/Hosted_Service/hosted-service-features",
