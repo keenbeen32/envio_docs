@@ -163,9 +163,10 @@
         "tab": "HyperRPC",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Getting Started",
             "pages": [
-              "index"
+              "HyperRPC/overview",
+              "HyperRPC/hyperrpc-supported-networks"
             ]
           }
         ]
