@@ -24,11 +24,11 @@
           {
             "group": "Introduction",
             "pages": [
-              "HyperIndex/overview",
-              "HyperIndex/getting-started",
-              "HyperIndex/contract-import",
-              "HyperIndex/benchmarks",
-              "HyperIndex/migration-guide"
+              "HyperIndex/Introduction/overview",
+              "HyperIndex/Introduction/getting-started",
+              "HyperIndex/Introduction/contract-import",
+              "HyperIndex/Introduction/benchmarks",
+              "HyperIndex/Introduction/migration-guide"
             ]
           },
           {
