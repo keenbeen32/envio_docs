@@ -1,0 +1,263 @@
+---
+title: "Indexing Greeter Contract Using Envio"
+description: "Learn how to build and run a multi-chain indexer that tracks Greeter contract events using Envio."
+---
+
+## Introduction
+
+This tutorial provides a step-by-step guide to indexing a simple Greeter smart contract deployed on multiple blockchains. You'll learn how to set up and run a multi-chain indexer using Envio's template system.
+
+### What is the Greeter Contract?
+
+The [Greeter contract](https://github.com/Float-Capital/hardhat-template) is a straightforward smart contract that allows users to store greeting messages on the blockchain. For this tutorial, we'll be indexing instances of this contract deployed on both **Polygon** and **Linea** networks.
+
+### What You'll Build
+
+By the end of this tutorial, you'll have:
+
+- A functioning multi-chain indexer that tracks greeting events
+- The ability to query these events through a GraphQL endpoint
+- Experience with Envio's core indexing functionality
+
+## Prerequisites
+
+<CardGroup cols={3}>
+  <Card title="Node.js" icon="node-js" href="https://nodejs.org/en/download/current">
+    v22 or newer recommended
+  </Card>
+  
+  <Card title="pnpm" icon="box" href="https://pnpm.io/installation">
+    v8 or newer
+  </Card>
+  
+  <Card title="Docker Desktop" icon="docker" href="https://www.docker.com/products/docker-desktop/">
+    Required for local development
+  </Card>
+</CardGroup>
+
+<Note>
+Docker is specifically required to run your indexer locally. You can skip Docker installation if you plan only to use Envio's hosted service.
+</Note>
+
+## Step 1: Initialize Your Project
+
+First, let's create a new project using Envio's Greeter template:
+
+<Steps>
+
+<Step title="Run the init command">
+Open your terminal and run:
+
+```bash icon="terminal" title="terminal"
+pnpx envio init
+```
+</Step>
+
+<Step title="Set the directory">
+When prompted for a directory, you can press Enter to use the current directory or specify another path:
+
+```bash icon="terminal" title="terminal"
+? Set the directory: (.) .
+```
+</Step>
+
+<Step title="Choose your language">
+Choose your preferred programming language for event handlers:
+
+```bash icon="terminal" title="terminal"
+? Which language would you like to use?
+> JavaScript
+  TypeScript
+  ReScript
+```
+</Step>
+
+<Step title="Select Template initialization">
+Select the **Template** initialization option:
+
+```bash icon="terminal" title="terminal"
+? Choose an initialization option
+> Template
+  Contract Import
+```
+</Step>
+
+<Step title="Choose the Greeter template">
+Choose the **Greeter** template:
+
+```bash icon="terminal" title="terminal"
+? Which template would you like to use?
+> Greeter
+  Erc20
+```
+
+After completing these steps, Envio will generate all the necessary files for your indexer project.
+</Step>
+
+</Steps>
+
+## Step 2: Understanding the Generated Files
+
+Let's examine the key files that were created:
+
+<Steps>
+
+<Step title="config.yaml">
+This configuration file defines which networks and contracts to index:
+
+```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+# Partial example
+envio_node:
+  networks:
+    - name: polygon
+      # ... Polygon network settings
+      contracts:
+        - name: Greeter
+          address: "0x9D02A17dE4E68545d3a58D3a20BbBE0399E05c9c"
+          # ... contract settings
+    - name: linea
+      # ... Linea network settings
+      contracts:
+        - name: Greeter
+          address: "0xdEe21B97AB77a16B4b236F952e586cf8408CF32A"
+          # ... contract settings
+```
+</Step>
+
+<Step title="schema.graphql">
+This schema defines the data structures for the indexed events:
+
+```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+type Greeting {
+  id: ID!
+  user: String!
+  greeting: String!
+  blockNumber: Int!
+  blockTimestamp: Int!
+  transactionHash: String!
+}
+
+type User {
+  id: ID!
+  latestGreeting: String!
+  numberOfGreetings: Int!
+  greetings: [String!]!
+}
+```
+</Step>
+
+<Step title="Event Handlers">
+This file contains the logic to process events emitted by the Greeter contract.
+
+The event handlers are located in `src/EventHandlers.js` (or `.ts`/`.res` depending on your language choice).
+</Step>
+
+</Steps>
+
+## Step 3: Start Your Indexer
+
+<Warning>
+Make sure Docker Desktop is running before proceeding.
+</Warning>
+
+Start the indexer with:
+
+```bash icon="terminal" title="terminal"
+pnpm dev
+```
+
+This command:
+
+- Launches Docker containers for the database and Hasura
+- Sets up your local development environment
+- Begins indexing data from the specified contracts
+- Opens a terminal UI to monitor indexing progress
+
+The indexer will retrieve data from both Polygon and Linea blockchains, starting from the blocks specified in your `config.yaml` file.
+
+## Step 4: Interact with the Contracts
+
+To see your indexer in action, you can write new greetings to the blockchain:
+
+### For Polygon:
+
+1. Visit the contract on [Polygonscan](https://polygonscan.com/address/0x9D02A17dE4E68545d3a58D3a20BbBE0399E05c9c#writeContract)
+2. Connect your wallet
+3. Use the `setGreeting` function to write a new greeting
+4. Submit the transaction
+
+### For Linea:
+
+1. Visit the contract on [Lineascan](https://lineascan.build/address/0xdEe21B97AB77a16B4b236F952e586cf8408CF32A#writeContract)
+2. Connect your wallet
+3. Use the `setGreeting` function to write a new greeting
+4. Submit the transaction
+
+Since this is a multi-chain example, you can interact with both contracts to see how Envio handles data from different blockchains simultaneously.
+
+## Step 5: Query the Indexed Data
+
+Now you can explore the data your indexer has captured:
+
+<Steps>
+
+<Step title="Open Hasura">
+Open Hasura at [http://localhost:8080](http://localhost:8080)
+
+When prompted for authentication, use the password: `testing`
+</Step>
+
+<Step title="Browse the data">
+Navigate to the **Data** tab to browse the database tables, or use the **API** tab to write GraphQL queries.
+</Step>
+
+<Step title="Run a sample query">
+Try this query to see the latest greetings:
+
+```graphql icon="/icons/graphql-icon.png" title="Hasura API"
+query GetGreetings {
+  Greeting(limit: 10, order_by: { blockTimestamp: desc }) {
+    id
+    user
+    greeting
+    blockNumber
+    blockTimestamp
+    transactionHash
+  }
+}
+```
+</Step>
+
+</Steps>
+
+## Step 6: Deploy to Production (Optional)
+
+When you're ready to move from local development to production:
+
+1. Visit the [Envio Hosted Service](https://envio.dev/app/login)
+2. Follow the steps to deploy your indexer
+3. Get a production GraphQL endpoint for your application
+
+For detailed deployment instructions, see the [Hosted Service documentation](/HyperIndex/Hosted_Service/hosted-service).
+
+## What You've Learned
+
+By completing this tutorial, you've learned:
+
+- How to initialize an Envio project from a template
+- How indexers process data from multiple blockchains
+- How to query indexed data using GraphQL
+- The basic structure of an Envio indexing project
+
+## Next Steps
+
+Now that you've mastered the basics, you can:
+
+- Try the [Contract Import](/HyperIndex/Introduction/contract-import) feature to index any deployed contract
+- Customize the event handlers to implement more complex indexing logic
+- Add relationships between entities in your schema
+- Explore the [Advanced Querying](/HyperIndex/Advanced/loaders) features
+- Create aggregated statistics from your indexed data
+
+For more tutorials and examples, visit the [Envio Documentation](https://docs.envio.dev/) or join our [Discord community](https://discord.gg/envio) for support.
+
