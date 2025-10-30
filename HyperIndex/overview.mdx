@@ -1,0 +1,71 @@
+---
+title: "Overview"
+description: "Explore HyperIndex, a blazing-fast multichain indexer for real-time blockchain data."
+---
+
+# HyperIndex: Fast Multichain Indexer
+
+**HyperIndex** is a blazing-fast, developer-friendly multichain indexer, optimized for both local development and reliable hosted deployment. It empowers developers to effortlessly build robust backends for blockchain applications.
+
+![Sync Process](/images/sync.gif)
+
+<Info>
+**HyperIndex & HyperSync**
+
+**HyperIndex** is Envio's full-featured blockchain indexing framework that transforms on-chain events into structured, queryable databases with GraphQL APIs.
+
+**HyperSync** is the high-performance data engine that powers HyperIndex. It provides the raw blockchain data access layer, delivering up to 2000x faster performance than traditional RPC endpoints.
+
+While HyperIndex gives you a complete indexing solution with schema management and event handling, HyperSync can be used directly for custom data pipelines and specialized applications.
+</Info>
+
+---
+
+## Key Features
+
+- **[Quickstart templates](/HyperIndex/Tutorials/greeter-tutorial)** – Rapidly bootstrap your indexer.
+- **[Real-time indexing](/HyperIndex/Advanced/performance/latency-at-head)** – Instantly track blockchain events.
+- **[Multichain indexing](/HyperIndex/Advanced/multichain-indexing)** – Supports multiple blockchains simultaneously.
+- **[Local development](/HyperIndex/Guides/running-locally)** – Full-featured local environment with Docker.
+- **[Reorg support](/HyperIndex/Advanced/reorgs-support)** – Gracefully handles blockchain reorganizations.
+- **[GraphQL API](/HyperIndex/Guides/navigating-hasura)** – Easy-to-query indexed data.
+- **[Cross-platform support](/HyperIndex/supported-networks/index)** – Index any EVM-compatible blockchain and Fuel.
+- **[High performance](/HyperIndex/Advanced/performance/benchmarking)** – Historical backfills at over 5,000+ events per second.
+- **[Indexer auto-generation](/HyperIndex/contract-import)** – Generate indexers directly from smart contract addresses.
+- **[Flexible language support](/HyperIndex/Advanced/terminology#programming-languages)** – JavaScript, TypeScript, and ReScript.
+- **[Factory contract support](/HyperIndex/Advanced/dynamic-contracts)** – Index data from 100,000+ factory contracts seamlessly.
+- **[On-chain & off-chain data integration](/HyperIndex/Guides/contract-state)** – Easily combine multiple data sources.
+- **[Self-hosted & managed options](/HyperIndex/Hosted_Service/hosted-service)** – Run your own setup or use HyperIndex hosted services.
+- **[Detailed logging & error reporting](/HyperIndex/Troubleshoot/logging)** – Debug and optimize with clarity.
+- **[External API actions](/HyperIndex/Guides/ipfs)** – Trigger external services based on blockchain events.
+- **[Wildcard topic indexing](/HyperIndex/Advanced/wildcard-indexing)** – Flexible indexing based on event topics.
+- **[Fallback RPC data sources](/HyperIndex/Advanced/hypersync#improving-resilience-with-rpc-fallback)** – Enhanced reliability with RPC connections.
+
+---
+
+## HyperSync API Token Requirements
+
+HyperSync (the data engine powering HyperIndex) implements rate limits for requests without API tokens. API tokens will be required from **3 November 2025**. Here's what you need to know:
+
+- **Local Development**: An API token will be required. An automatic login feature from the CLI will be available to make this smoother.
+- **Self-Hosted Deployments**: API tokens are required for HyperSync access in self-hosted deployments. The token can be set via the `ENVIO_API_TOKEN` environment variable in your indexer configuration. This can be read from the `.env` file in the root of your HyperIndex project.
+- **Hosted Service**: Indexers deployed to our hosted service will have special access that doesn't require a custom API token.
+- **Future Pricing**: From mid-November 2025 onwards, we will introduce tiered packages for those self-hosting hyperindex and wishing to use hypersync. For preferred introductory pricing based on your specific use case, reach out to us on [Discord](https://discord.gg/Q9qt8gZ2fX).
+
+For more details about API tokens, including how to generate and implement them, see our [API Tokens documentation](/HyperSync/api-tokens).
+
+---
+
+## Feature Roadmap
+
+Upcoming features on our development roadmap:
+
+- **⬜ RPC client with caching** – Improved indexing performance through cached RPC calls.
+
+---
+
+## 🔗 Quick Links
+
+- [GitHub Repository](https://github.com/enviodev/hyperindex) ⭐
+- [Join our Discord Community](https://discord.gg/Q9qt8gZ2fX)
+

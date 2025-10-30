@@ -8,18 +8,113 @@
     "dark": "#15803D"
   },
   "favicon": "/favicon.svg",
-  "styles": ["custom.css"],
+  "styles": [
+    "custom_css/navbar.css",
+    "custom_css/sidebar.css"
+  ],
   "navigation": {
     "tabs": [
       {
         "tab": "HyperIndex",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Introduction",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "HyperIndex/overview",
+              "HyperIndex/getting-started",
+              "HyperIndex/contract-import",
+              "HyperIndex/benchmarks",
+              "HyperIndex/migration-guide"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "HyperIndex/Guides/configuration-file",
+              "HyperIndex/Guides/schema-file",
+              "HyperIndex/Guides/event-handlers",
+              "HyperIndex/Guides/block-handlers",
+              "HyperIndex/Advanced/multichain-indexing",
+              "HyperIndex/Guides/testing",
+              "HyperIndex/Guides/navigating-hasura",
+              "HyperIndex/Guides/environment-variables"
+            ]
+          },
+          {
+            "group": "Examples",
+            "pages": [
+              "HyperIndex/Examples/example-uniswap-v4",
+              "HyperIndex/Examples/example-sablier",
+              "HyperIndex/Examples/example-velodrome-aerodrome"
+            ]
+          },
+          {
+            "group": "Hosting",
+            "pages": [
+              "HyperIndex/Hosted_Service/hosted-service",
+              "HyperIndex/Hosted_Service/hosted-service-features",
+              "HyperIndex/Hosted_Service/hosted-service-deployment",
+              "HyperIndex/Hosted_Service/hosted-service-monitoring",
+              "HyperIndex/Hosted_Service/hosted-service-billing",
+              "HyperIndex/Hosted_Service/self-hosting"
+            ]
+          },
+          {
+            "group": "Tutorials",
+            "pages": [
+              "HyperIndex/Tutorials/tutorial-op-bridge-deposits",
+              "HyperIndex/Tutorials/tutorial-erc20-token-transfers",
+              "HyperIndex/Tutorials/tutorial-indexing-fuel",
+              "HyperIndex/Tutorials/greeter-tutorial",
+              "HyperIndex/Tutorials/price-data",
+              "HyperIndex/Tutorials/tutorial-scaffold-eth-2"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "HyperIndex/Advanced/dynamic-contracts",
+              "HyperIndex/Advanced/wildcard-indexing",
+              "HyperIndex/Advanced/preload-optimization",
+              "HyperIndex/Advanced/effect-api",
+              "HyperIndex/Guides/contract-state",
+              "HyperIndex/Guides/ipfs",
+              "HyperIndex/Advanced/hypersync",
+              "HyperIndex/Advanced/rpc-sync",
+              "HyperIndex/Advanced/config-schema-reference",
+              "HyperIndex/Guides/cli-commands",
+              "HyperIndex/Advanced/reorgs-support",
+              "HyperIndex/Advanced/generated-files",
+              "HyperIndex/Advanced/metadata-query",
+              "HyperIndex/Advanced/terminology",
+              "HyperIndex/Advanced/performance/database-performance-optimization",
+              "HyperIndex/Advanced/performance/latency-at-head",
+              "HyperIndex/Advanced/performance/benchmarking",
+              "HyperIndex/Advanced/loaders"
+            ]
+          },
+          {
+            "group": "Troubleshoot",
+            "pages": [
+              "HyperIndex/Troubleshoot/logging",
+              "HyperIndex/Troubleshoot/common-issues",
+              "HyperIndex/Troubleshoot/error-codes",
+              "HyperIndex/Troubleshoot/reserved-words"
+            ]
+          },
+          {
+            "group": "Supported Networks",
+            "pages": [
+              "HyperIndex/supported-networks/index"
+            ]
+          },
+          {
+            "group": "Other",
+            "pages": [
+              "HyperIndex/fuel/fuel",
+              "HyperIndex/licensing",
+              "HyperIndex/terms-of-service",
+              "HyperIndex/privacy-policy"
             ]
           }
         ]

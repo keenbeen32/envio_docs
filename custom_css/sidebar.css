@@ -1,0 +1,119 @@
+/* ========================================
+   SIDEBAR CUSTOMIZATION
+   Purpose: Match Bun docs sidebar styling
+   Note: Using actual Mintlify class names from HTML
+   ======================================== */
+
+/* Import Inter font (matching Bun docs) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ==================
+   ITEM SPACING & STYLING
+   ================== */
+
+/* Sidebar links - matching Bun docs style */
+#sidebar-group li a {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif !important;
+  font-size: 13px !important;        /* Reduced from 14px */
+  font-weight: 500 !important;
+  line-height: 18px !important;      /* Adjusted to match smaller font */
+  color: #1f2937 !important;         /* Darker - gray-800 instead of gray-700 */
+  padding: 6px 12px !important;
+  padding-left: 1.5rem !important;   /* Add left indentation */
+  border-radius: 6px !important;
+  display: block !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+/* Hover state - matching Bun docs */
+#sidebar-group li a:hover {
+  font-weight: 600 !important;
+  color: #111827 !important;
+  background-color: #f3f4f6 !important;
+}
+
+/* Active/current page state */
+#sidebar-group li a.bg-primary\/10,
+#sidebar-group li a[class*="bg-primary"] {
+  font-weight: 600 !important;
+  color: #111827 !important;
+  background-color: #f3f4f6 !important;
+}
+
+/* Dark mode support */
+.dark #sidebar-group li a {
+  color: #d1d5db !important;
+}
+
+.dark #sidebar-group li a:hover,
+.dark #sidebar-group li a.bg-primary\/10,
+.dark #sidebar-group li a[class*="bg-primary"] {
+  color: #f9fafb !important;
+  background-color: #374151 !important;
+}
+
+/* Reduce spacing between items (override space-y-px if needed) */
+#sidebar-group.space-y-px > li {
+  margin-top: 0 !important;
+}
+
+/* Make sure the text inside also inherits the font styling */
+#sidebar-group li a div {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}
+
+/* ==================
+   GROUP SEPARATORS
+   ================== */
+
+/* Reduce the margin between groups and add border-top */
+#navigation-items > div.mt-6,
+#navigation-items > div.lg\:mt-8 {
+  margin-top: 1rem !important;  /* Reduced from 1.5rem/2rem */
+  padding-top: 1rem !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Remove border from first group */
+#navigation-items > div:first-child {
+  border-top: none !important;
+  padding-top: 0 !important;
+}
+
+/* Dark mode support for group separators */
+.dark #navigation-items > div.mt-6,
+.dark #navigation-items > div.lg\:mt-8 {
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark #navigation-items > div:first-child {
+  border-top: none !important;
+}
+
+/* ==================
+   GROUP HEADINGS
+   ================== */
+
+/* Add icons to group headings */
+.sidebar-group-header h5#sidebar-title::before {
+  content: "📁";
+  margin-right: 8px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Style group heading container */
+.sidebar-group-header {
+  margin-bottom: 0.5rem !important;  /* Tighter spacing */
+}
+
+/* Group heading text styles */
+.sidebar-group-header h5#sidebar-title {
+  font-size: 0.8125rem !important;  /* 13px */
+  text-transform: uppercase !important;
+  letter-spacing: 0.025em !important;
+}
+
