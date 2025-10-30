@@ -260,7 +260,7 @@ This example tests that when a `NewGreeting` event is processed, it correctly cr
 
 <CodeGroup>
 
-```typescript icon="/icons/typescript-icon.png" title="test/test.ts"
+```typescript icon="/icons/typescript-icon.png" title="test.ts"
 it("A NewGreeting event creates a User entity", async () => {
   // Step 1: Initialize an empty mock database
   const mockDb = MockDb.createMockDb();
@@ -292,7 +292,7 @@ it("A NewGreeting event creates a User entity", async () => {
 });
 ```
 
-```javascript icon="/icons/javascript-icon.png" title="test/test.js"
+```javascript icon="/icons/javascript-icon.png" title="test.js"
 it("A NewGreeting event creates a User entity", async () => {
   // Step 1: Initialize an empty mock database
   const mockDb = MockDb.createMockDb();
@@ -324,7 +324,7 @@ it("A NewGreeting event creates a User entity", async () => {
 });
 ```
 
-```rescript icon="/icons/rescript-icon.png" title="test/test.res"
+```rescript icon="/icons/rescript-icon.png" title="test.res"
 it("A NewGreeting event creates a User entity", async () => {
     // Step 1: Initialize an empty mock database
     let mockDb = TestHelpers.MockDb.createMockDb()
@@ -366,7 +366,7 @@ This example tests that when the same user sends multiple greetings, the counter
 
 <CodeGroup>
 
-```typescript icon="/icons/typescript-icon.png" title="test/test.ts"
+```typescript icon="/icons/typescript-icon.png" title="test.ts"
 it("2 Greetings from the same users results in that user having a greeter count of 2", async () => {
   // Step 1: Initialize the mock database
   const mockDb = MockDb.createMockDb();
@@ -402,7 +402,7 @@ it("2 Greetings from the same users results in that user having a greeter count 
 });
 ```
 
-```javascript icon="/icons/javascript-icon.png" title="test/test.js"
+```javascript icon="/icons/javascript-icon.png" title="test.js"
 it("2 Greetings from the same users results in that user having a greeter count of 2", async () => {
   // Step 1: Initialize the mock database
   const mockDb = MockDb.createMockDb();
@@ -438,7 +438,7 @@ it("2 Greetings from the same users results in that user having a greeter count 
 });
 ```
 
-```rescript icon="/icons/rescript-icon.png" title="test/test.res"
+```rescript icon="/icons/rescript-icon.png" title="test.res"
 it("2 Greetings from the same users results in that user having a greeter count of 2", async () => {
     // Step 1: Initialize the mock database
     let mockDb = TestHelpers.MockDb.createMockDb()
@@ -508,19 +508,19 @@ Make sure you're importing the correct files
 
 <CodeGroup>
 
-```typescript icon="/icons/typescript-icon.png" title="test/test.ts"
+```typescript icon="/icons/typescript-icon.png" title="test.ts"
 import assert from "assert";
 import { UserEntity, TestHelpers } from "generated";
 const { MockDb, Greeter, Addresses } = TestHelpers;
 ```
 
-```javascript icon="/icons/javascript-icon.png" title="test/test.js"
+```javascript icon="/icons/javascript-icon.png" title="test.js"
 const assert = require("assert");
 const { UserEntity, TestHelpers } = require("generated");
 const { MockDb, Greeter, Addresses } = TestHelpers;
 ```
 
-```rescript icon="/icons/rescript-icon.png" title="test/test.res"
+```rescript icon="/icons/rescript-icon.png" title="test.res"
 open RescriptMocha
 open Mocha
 open Belt
