@@ -1,5 +1,5 @@
 ---
-title: "Event Handlers (src/EventHandlers.*)"
+title: "Event Handlers"
 description: "Learn how to register and manage event handlers for efficient data indexing."
 ---
 
@@ -9,7 +9,7 @@ A handler is a function that receives blockchain data, processes it, and inserts
 
 <CodeGroup>
 
-```typescript TypeScript
+```typescript icon="/icons/typescript-icon.png" TypeScript
 import { <CONTRACT_NAME> } from "generated";
 
 <CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
@@ -17,7 +17,7 @@ import { <CONTRACT_NAME> } from "generated";
 });
 ```
 
-```javascript JavaScript
+```javascript icon="/icons/javascript-icon.png" JavaScript
 const { <CONTRACT_NAME> } = require("generated");
 
 <CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
@@ -25,7 +25,7 @@ const { <CONTRACT_NAME> } = require("generated");
 });
 ```
 
-```rescript ReScript
+```rescript icon="/icons/rescript-icon.png" ReScript
 Handlers.<CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
   // Your logic here
 });
@@ -43,7 +43,7 @@ Here's a handler example for the `NewGreeting` event. It belongs to the `Greeter
 
 <CodeGroup>
 
-```typescript TypeScript
+```typescript icon="/icons/typescript-icon.png" TypeScript
 import { Greeter, User } from "generated";
 
 // Handler for the NewGreeting event
@@ -71,7 +71,7 @@ Greeter.NewGreeting.handler(async ({ event, context }) => {
 });
 ```
 
-```javascript JavaScript
+```javascript icon="/icons/javascript-icon.png" JavaScript
 const { Greeter } = require("generated");
 
 // Handler for the NewGreeting event
@@ -99,7 +99,7 @@ Greeter.NewGreeting.handler(async ({ event, context }) => {
 });
 ```
 
-```rescript ReScript
+```rescript icon="/icons/rescript-icon.png" ReScript
 open Types
 
 // Handler for the NewGreeting event
@@ -313,7 +313,7 @@ Both `context.Entity.set` and `context.Entity.deleteUnsafe` methods use the In-M
 
 When your schema defines a field that links to another entity type, set the relationship using `<field>_id` with the referenced entity's `id`. You are storing the ID, not the full entity object.
 
-```graphql filename="schema.graphql"
+```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
 type A {
   id: ID!
   b: B!
@@ -351,7 +351,7 @@ Use the following approach to update specific fields in an existing entity:
 
 <CodeGroup>
 
-```typescript TypeScript
+```typescript icon="/icons/typescript-icon.png" TypeScript
 const pool = await context.Pool.get(poolId);
 if (pool) {
   context.Pool.set({
@@ -361,7 +361,7 @@ if (pool) {
 }
 ```
 
-```javascript JavaScript
+```javascript icon="/icons/javascript-icon.png" JavaScript
 const pool = await context.Pool.get(poolId);
 if (pool) {
   context.Pool.set({
@@ -371,7 +371,7 @@ if (pool) {
 }
 ```
 
-```rescript ReScript
+```rescript icon="/icons/rescript-icon.png" ReScript
 let pool = await context.pool.get(poolId);
 pool->Option.forEach(pool => {
   context.pool.set({
