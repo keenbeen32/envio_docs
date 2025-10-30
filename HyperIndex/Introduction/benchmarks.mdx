@@ -1,0 +1,49 @@
+---
+title: "Benchmarks"
+description: "Discover HyperIndex benchmarks and see why it's the fastest blockchain data indexer."
+---
+
+HyperIndex delivers industry-leading performance for blockchain data indexing. Independent benchmarks have consistently shown Envio's HyperIndex to be the fastest indexing solution available, with dramatic performance advantages over competitive offerings.
+
+---
+
+## Recent Independent Benchmarks
+
+The most comprehensive and up-to-date benchmarks were conducted by Sentio in April 2025 and are available in the [sentio-benchmark repository](https://github.com/enviodev/sentio-benchmark). These benchmarks compare Envio's HyperIndex against other popular indexers across multiple real-world scenarios:
+
+### Key Performance Highlights
+
+<div style={{display: 'flex', justifyContent: 'center'}}>
+<Card>
+
+| **Benchmark Test** | **Description** | **Envio** | **Nearest Competitor** | **TheGraph** | **Ponder** |
+|-------------------|----------------|-----------|----------------------|------------|-----------|
+| **LBTC Token Transfers** | Event handling, No RPC calls, Write-only | **3m** | 8m<br/>*2.6x slower (Sentio)* | 3h 9m<br/>*3780x slower* | 1h 40m<br/>*2000x slower* |
+| **LBTC Token with RPC calls** | Event handling, RPC calls, Read-after-write | **1m** | 6m<br/>*6x slower (Sentio)* | 1h 3m<br/>*63x slower* | 45m<br/>*45x slower* |
+| **Ethereum Block Processing** | 100K blocks with Metadata extraction | **7.9s** | 1m<br/>*7.5x slower (Subsquid)* | 10m<br/>*75x slower* | 33m<br/>*250x slower* |
+| **Transaction Gas Usage** | Transaction handling, Gas calculations | **1m 26s** | 7m<br/>*4.8x slower (Subsquid)* | N/A | 33m<br/>*23x slower* |
+| **Uniswap V2 Swap Trace** | Transaction trace handling, Swap decoding | **41s** | 2m<br/>*3x slower (Subsquid)* | 8m<br/>*11x slower* | N/A |
+| **Uniswap V2 Factory** | Event handling, Pair and swap analysis | **8s** | 2m<br/>*15x slower (Subsquid)* | 19m<br/>*142x slower* | 21m<br/>*157x slower* |
+
+</Card>
+</div>
+
+The independent benchmark results demonstrate that HyperIndex consistently outperforms all competitors across every tested scenario. This includes the most realistic real-world indexing scenario LBTC Token with RPC calls - where HyperIndex was up to 6x faster than the nearest competitor and over 63x faster than TheGraph.
+
+---
+
+## Historical Benchmarking Results
+
+Our internal benchmarking from October 2023 showed similar performance advantages. When indexing the Uniswap V3 ETH-USDC pool contract on Ethereum Mainnet, HyperIndex achieved:
+
+- 2.1x faster indexing than the nearest competitor
+- Over 100x faster indexing than some popular alternatives
+
+You can read the full details in our [Indexer Benchmarking Results blog post](/blog/indexer-benchmarking-results).
+
+---
+
+## Verify For Yourself
+
+We encourage developers to run their own benchmarks. You can use the templates provided in the [Sentio benchmark repository](https://github.com/sentioxyz/indexer-benchmark) or our sample indexer implementations for various scenarios.
+

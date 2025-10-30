@@ -1,0 +1,162 @@
+---
+title: "Features"
+description: "Production-ready features for managing and securing your indexer deployments."
+---
+
+Our hosted service includes several production-ready features to help you manage and secure your indexer deployments.
+
+<Info>
+**Plan Availability**: Most features listed on this page are available for **paid production plans only**. The free development plan has limited features and is designed for testing and development purposes. [View our pricing plans](/HyperIndex/Hosted_Service/hosted-service-billing) to see what's included in each plan.
+</Info>
+
+## Feature Overview
+
+<CardGroup cols={3}>
+  <Card title="Security & Access Control" icon="shield" href="#ip-whitelisting">
+    IP whitelisting and access control
+  </Card>
+  
+  <Card title="Monitoring & Alerts" icon="bell" href="#built-in-alerts">
+    Multi-channel alerting system
+  </Card>
+  
+  <Card title="Zero-Downtime Updates" icon="rotate" href="#zero-downtime-deployments">
+    Seamless version switching
+  </Card>
+  
+  <Card title="Global Infrastructure" icon="globe" href="#deployment-location-choice">
+    Choose your deployment region
+  </Card>
+  
+  <Card title="Database Access" icon="database" href="#direct-database-access">
+    Direct SQL query access
+  </Card>
+  
+  <Card title="Analytics Platform" icon="chart-line" href="#powerful-analytics-solution">
+    ClickHouse + Metabase integration
+  </Card>
+</CardGroup>
+
+---
+
+## IP Whitelisting
+
+<Info>
+**Coming Soon!** Full support for whitelisting is in active development.
+</Info>
+
+Control access to your indexer by restricting requests to specific IP addresses. This security feature helps protect your data and ensures only authorized clients can query your indexer.
+
+**Benefits:**
+- Enhanced security for sensitive data
+- Prevent unauthorized access
+- Control API usage from specific sources
+- Ideal for production environments with strict access requirements
+
+## Built-in Alerts
+
+Stay informed about your indexer's health and performance with our integrated alerting system. Configure multiple notification channels and choose which alerts you want to receive.
+
+<Info>
+**Version Requirement**: This feature is only available for indexers deployed with version 2.24.0 or higher.
+</Info>
+
+### Notification Channels
+
+Configure one or multiple notification channels to receive alerts:
+
+<div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem'}}>
+  <div style={{padding: '0.75rem 1.5rem', background: '#f3f4f6', borderRadius: '0.5rem', fontWeight: '500'}}>
+    💬 Discord
+  </div>
+  <div style={{padding: '0.75rem 1.5rem', background: '#f3f4f6', borderRadius: '0.5rem', fontWeight: '500'}}>
+    💼 Slack
+  </div>
+  <div style={{padding: '0.75rem 1.5rem', background: '#f3f4f6', borderRadius: '0.5rem', fontWeight: '500'}}>
+    📱 Telegram
+  </div>
+  <div style={{padding: '0.75rem 1.5rem', background: '#f3f4f6', borderRadius: '0.5rem', fontWeight: '500'}}>
+    📧 Email
+  </div>
+</div> 
+
+## Zero-Downtime Deployments
+
+Update your indexer without any service interruption using our seamless deployment system with static production endpoints.
+
+**How it works:**
+- Deploy new versions alongside your current deployment
+- Each indexer gets a **static production endpoint** that remains consistent
+- Use 'Promote to Production' to instantly route the static endpoint to any deployment
+- All requests to your static production endpoint are automatically routed to the promoted deployment
+- Maintain API availability throughout upgrades with no endpoint changes required
+
+**Key Features:**
+- **Static Production Endpoint**: Consistent URL that never changes, regardless of which deployment is active
+- **Instant Switching**: Promote any deployment to production with zero downtime
+- **Rollback Capabilities**: Quickly switch back to previous deployments if needed
+- **Seamless Updates**: Your applications continue working without any configuration changes
+
+## Deployment Location Choice
+
+<Info>
+**Coming Soon!** Full support for cross-region deployments is in active development. If you require a deployment to be based in the USA please contact us through our support channel on discord.
+</Info>
+
+*Availability: Dedicated plans only*
+
+Choose your primary deployment region to optimize performance and meet compliance requirements.
+
+**Available Regions:**
+<div style={{display: 'flex', gap: '1rem', marginTop: '0.75rem', marginBottom: '1rem'}}>
+  <div style={{padding: '0.75rem 1.5rem', background: '#f3f4f6', borderRadius: '0.5rem', fontWeight: '500'}}>
+    🇺🇸 USA
+  </div>
+  <div style={{padding: '0.75rem 1.5rem', background: '#f3f4f6', borderRadius: '0.5rem', fontWeight: '500'}}>
+    🇪🇺 EU
+  </div>
+</div>
+
+**Benefits:**
+- Reduced latency for your target users
+- Data residency compliance support
+- Custom infrastructure configurations
+- Dedicated infrastructure resources
+
+## Direct Database Access
+
+*Availability: Dedicated plans only*
+
+Access your indexed data directly through SQL queries, providing flexibility beyond the standard GraphQL endpoint.
+
+**Use Cases:**
+- Complex analytical queries
+- Custom data exports
+- Advanced reporting and dashboards
+- Integration with external analytics tools
+
+## Powerful Analytics Solution
+
+*Availability: Dedicated plans only (additional cost)*
+
+A comprehensive analytics platform that automatically pipes your indexed data from PostgreSQL into ClickHouse (approximately 2 minutes behind real-time) and provides access through a hosted Metabase instance.
+
+**Technical Architecture:**
+- **Data Pipeline**: Automatic replication from PostgreSQL to ClickHouse
+- **Near Real-time**: Data available in an analytics platform within ~2 minutes
+- **Frontend**: Hosted Metabase instance for visualization and analysis
+- **Performance**: ClickHouse optimized for analytical queries on large datasets
+
+**Capabilities:**
+- Interactive, customizable dashboards through Metabase
+- Variety of visualization options (charts, graphs, tables, maps)
+- Fast analytical queries on large datasets via ClickHouse
+- Ad-hoc SQL queries for data exploration
+- Automated alerts based on data thresholds
+- Team collaboration and report sharing
+- Export capabilities for further analysis
+
+<Tip>
+For deployment instructions and limits, see our [Deployment Guide](/HyperIndex/Hosted_Service/hosted-service-deployment). For pricing and feature availability by plan, see our [Billing & Pricing page](/HyperIndex/Hosted_Service/hosted-service-billing).
+</Tip>
+

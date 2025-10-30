@@ -1,4 +1,9 @@
-/* Custom navigation alignment - split left and right */
+/* ========================================
+   NAVIGATION BAR CUSTOMIZATION
+   Purpose: Split navigation with left and right alignment
+   ======================================== */
+
+/* Main navigation container */
 .nav-tabs {
   display: flex !important;
   width: 100% !important;

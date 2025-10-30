@@ -1,0 +1,29 @@
+/* ========================================
+   CONTENT CUSTOMIZATION
+   Purpose: Styling for page content elements
+   ======================================== */
+
+/* ==================
+   CALLOUT BLOCKS
+   ================== */
+
+/* Override Callout text color to be normal (not blue) */
+[class*="callout"],
+[class*="Callout"] {
+  color: inherit !important;
+}
+
+/* Ensure text inside callouts uses normal text color */
+[class*="callout"] p,
+[class*="callout"] strong,
+[class*="Callout"] p,
+[class*="Callout"] strong {
+  color: inherit !important;
+}
+
+/* Dark mode - ensure normal text color */
+.dark [class*="callout"],
+.dark [class*="Callout"] {
+  color: inherit !important;
+}
+

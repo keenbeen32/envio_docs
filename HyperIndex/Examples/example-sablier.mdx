@@ -1,0 +1,72 @@
+---
+title: "Sablier Protocol Indexers"
+description: "Explore Sablier protocol indexers to track token streams and distributions across multiple chains."
+---
+
+The following indexers serve as exceptional reference implementations for the Sablier protocol, showcasing professional development practices and efficient multi-chain data processing.
+
+## Overview
+
+[Sablier](https://sablier.com/) is a token streaming protocol that enables real-time finance on the blockchain, allowing tokens to be streamed continuously over time. These official Sablier indexers track streaming activity across 18 different EVM-compatible chains, providing comprehensive data through a unified GraphQL API.
+
+## Professional Indexer Suite
+
+Sablier maintains three specialized indexers, each targeting a specific part of their protocol:
+
+<CardGroup cols={3}>
+  <Card title="Lockup Indexer" icon="lock" href="https://github.com/sablier-labs/subgraphs/tree/main/apps/lockup-envio">
+    Tracks the core Sablier lockup contracts for token streaming with fixed durations. Handles stream creation, cancellation, and withdrawal events. Used primarily for vesting functionality.
+  </Card>
+  
+  <Card title="Flow Indexer" icon="water" href="https://github.com/sablier-labs/subgraphs/tree/main/apps/flow-envio">
+    Monitors advanced streaming functionality with dynamic flow rates. Captures stream modifications and batch operations. Powers the payments side of Sablier.
+  </Card>
+  
+  <Card title="Merkle Indexer" icon="diagram-project" href="https://github.com/sablier-labs/subgraphs/tree/main/apps/merkle-envio">
+    Tracks Merkle distribution system for efficient batch stream creation. Provides data about batch creations and claims. Used for Airstreams and Instant Airdrops.
+  </Card>
+</CardGroup>
+
+## Key Features
+
+- **Comprehensive Multi-chain Support**: Indexes data across 18 different EVM chains
+- **Professionally Maintained**: Used in production by the Sablier team and their partners
+- **Extensive Test Coverage**: Includes comprehensive testing to ensure data accuracy
+- **Optimized Performance**: Implements efficient data processing techniques
+- **Well-Documented**: Clear code structure with extensive comments
+- **Backward Compatibility**: Carefully manages schema evolution and contract upgrades
+- **Cross-chain Architecture**: Unified indexer endpoint for all networks
+
+## Best Practices Showcase
+
+These indexers demonstrate several development best practices:
+
+- **Modular Code Structure**: Well-organized code with clear separation of concerns
+- **Consistent Naming Conventions**: Professional and consistent naming throughout
+- **Efficient Event Handling**: Optimized processing of blockchain events
+- **Comprehensive Entity Relationships**: Well-designed data model with proper relationships
+- **Thorough Input Validation**: Robust error handling and input validation
+- **Detailed Changelogs**: Documentation of breaking changes and migrations
+- **Handler/Loader Pattern**: Envio indexers use an optimized pattern with loaders to pre-fetch entities and handlers to process them
+
+## Getting Started
+
+To use these indexers as a reference for your own development:
+
+1. Clone the specific repository based on your needs:
+   - [Lockup Indexer](https://github.com/sablier-labs/subgraphs/tree/main/apps/lockup-envio)
+   - [Flow Indexer](https://github.com/sablier-labs/subgraphs/tree/main/apps/flow-envio)
+   - [Merkle Indexer](https://github.com/sablier-labs/subgraphs/tree/main/apps/merkle-envio)
+2. Review the file structure and implementation patterns
+3. Examine the event handlers for efficient data processing techniques
+4. Study the schema design for effective entity modeling
+
+For complete API documentation and usage examples, see:
+
+- [Sablier API Overview](https://docs.sablier.com/api/overview#envio)
+- [Implementation Caveats](https://docs.sablier.com/api/caveats)
+
+<Note>
+These are official indexers maintained by the Sablier team and represent production-quality implementations. They serve as excellent examples of professional indexer development and are regularly updated to support the latest protocol features.
+</Note>
+

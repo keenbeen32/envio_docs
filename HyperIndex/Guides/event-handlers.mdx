@@ -1,0 +1,506 @@
+---
+title: "Event Handlers"
+description: "Learn how to register and manage event handlers for efficient data indexing."
+---
+
+## Registration
+
+A handler is a function that receives blockchain data, processes it, and inserts it into the database. You can register handlers in the file defined in the `handler` field in your `config.yaml` file. By default this is `src/EventHandlers.*` file.
+
+<CodeGroup>
+
+```typescript icon="/icons/typescript-icon.png" TypeScript
+import { <CONTRACT_NAME> } from "generated";
+
+<CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
+  // Your logic here
+});
+```
+
+```javascript icon="/icons/javascript-icon.png" JavaScript
+const { <CONTRACT_NAME> } = require("generated");
+
+<CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
+  // Your logic here
+});
+```
+
+```rescript icon="/icons/rescript-icon.png" ReScript
+Handlers.<CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
+  // Your logic here
+});
+```
+
+</CodeGroup>
+
+<Note>
+The `generated` module contains code and types based on `config.yaml` and `schema.graphql` files. Update it by running **`pnpm codegen`** command whenever you change these files.
+</Note>
+
+### Basic Example
+
+Here's a handler example for the `NewGreeting` event. It belongs to the `Greeter` contract from our beginners [Greeter Tutorial](/HyperIndex/Tutorials/greeter-tutorial):
+
+<CodeGroup>
+
+```typescript icon="/icons/typescript-icon.png" TypeScript
+import { Greeter, User } from "generated";
+
+// Handler for the NewGreeting event
+Greeter.NewGreeting.handler(async ({ event, context }) => {
+  const userId = event.params.user; // The id for the User entity
+  const latestGreeting = event.params.greeting; // The greeting string that was added
+  const currentUserEntity = await context.User.get(userId); // Optional user entity that may already exist
+
+  // Update or create a new User entity
+  const userEntity: User = currentUserEntity
+    ? {
+        id: userId,
+        latestGreeting,
+        numberOfGreetings: currentUserEntity.numberOfGreetings + 1,
+        greetings: [...currentUserEntity.greetings, latestGreeting],
+      }
+    : {
+        id: userId,
+        latestGreeting,
+        numberOfGreetings: 1,
+        greetings: [latestGreeting],
+      };
+
+  context.User.set(userEntity); // Set the User entity in the DB
+});
+```
+
+```javascript icon="/icons/javascript-icon.png" JavaScript
+const { Greeter } = require("generated");
+
+// Handler for the NewGreeting event
+Greeter.NewGreeting.handler(async ({ event, context }) => {
+  const userId = event.params.user; // The id for the User entity
+  const latestGreeting = event.params.greeting; // The greeting string that was added
+  const currentUserEntity = await context.User.get(userId); // Optional user entity that may already exist
+
+  // Update or create a new User entity
+  const userEntity = currentUserEntity
+    ? {
+        id: userId,
+        latestGreeting,
+        numberOfGreetings: currentUserEntity.numberOfGreetings + 1,
+        greetings: [...currentUserEntity.greetings, latestGreeting],
+      }
+    : {
+        id: userId,
+        latestGreeting,
+        numberOfGreetings: 1,
+        greetings: [latestGreeting],
+      };
+
+  context.User.set(userEntity); // Set the User entity in the DB
+});
+```
+
+```rescript icon="/icons/rescript-icon.png" ReScript
+open Types
+
+// Handler for the NewGreeting event
+Handlers.Greeter.NewGreeting.handler(async ({event, context}) => {
+  let userId = event.params.user->Address.toString // The id for the User entity
+  let latestGreeting = event.params.greeting // The greeting string that was added
+  let maybeCurrentUserEntity = await context.user.get(userId) // Optional User entity that may already exist
+
+  // Update or create a new User entity
+  let userEntity: Entities.User.t = switch maybeCurrentUserEntity {
+  | Some(existingUserEntity) => {
+      id: userId,
+      latestGreeting,
+      numberOfGreetings: existingUserEntity.numberOfGreetings + 1,
+      greetings: existingUserEntity.greetings->Belt.Array.concat([latestGreeting]),
+    }
+  | None => {
+      id: userId,
+      latestGreeting,
+      numberOfGreetings: 1,
+      greetings: [latestGreeting],
+    }
+  }
+
+  context.user.set(userEntity) // Set the User entity in the DB
+})
+```
+
+</CodeGroup>
+
+### Preload Optimization
+
+<Warning>
+**Important!** Preload optimization makes your handlers run **twice**.
+</Warning>
+
+Starting from `envio@2.27` all new indexers are created with preload optimization pre-configured by default.
+
+This optimization enables HyperIndex to efficiently preload entities used by handlers through batched database queries, while ensuring events are processed synchronously in their original order. When combined with the [Effect API](/HyperIndex/Advanced/effect-api) for external calls, this feature delivers performance improvements of multiple orders of magnitude compared to other indexing solutions.
+
+Read more in the dedicated guides:
+
+- [How Preload Optimization Works](/HyperIndex/Advanced/preload-optimization)
+- [Double-Run Footgun](/HyperIndex/Advanced/preload-optimization#double-run-footgun)
+- [Effect API](/HyperIndex/Guides/event-handlers#external-calls)
+- [Migrating from Loaders](/HyperIndex/Advanced/preload-optimization#migrating-from-loaders) (recommended)
+
+### Advanced Use Cases
+
+HyperIndex provides many features to help you build more powerful and efficient indexers. There's definitely the one for you:
+
+- Handle Factory Contracts with [Dynamic Contract Registration](/HyperIndex/Advanced/dynamic-contracts) (with nested factories support)
+- Perform external calls to decide which contract address to register using [Async Contract Register](/HyperIndex/Advanced/dynamic-contracts#async-contract-register)
+- Index all ERC20 token transfers with [Wildcard Indexing](/HyperIndex/Advanced/wildcard-indexing)
+- Use [Topic Filtering](/HyperIndex/Advanced/wildcard-indexing) to ignore irrelevant events
+  - With [multiple filters for single event](/HyperIndex/Advanced/wildcard-indexing#multiple-filters)
+  - With [different filters per network](/HyperIndex/Advanced/wildcard-indexing#different-filters-per-network)
+  - With [filter by dynamicly registered contract addresses](/HyperIndex/Advanced/wildcard-indexing#index-all-erc20-transfers-to-your-contract) (eg Index all ERC20 transfers to/from your Contract)
+- [Access Contract State](/HyperIndex/Guides/contract-state) directly from handlers
+- Perform external calls from handlers by following the [IPFS Integration guide](/HyperIndex/Guides/ipfs)
+
+---
+
+## Event Object
+
+Each handler receives an `event` object containing details about the emitted event, including parameters and blockchain metadata.
+
+### Accessing Event Parameters
+
+Event parameters are accessed via:
+
+```typescript
+event.params.<PARAMETER_NAME>
+```
+
+Example usage:
+
+```typescript
+const sender = event.params.sender;
+const amount = event.params.amount;
+```
+
+### Additional Event Information
+
+The event object also contains additional metadata:
+
+- `event.chainId` – Chain ID of the network emitting the event.
+- `event.srcAddress` – Contract address emitting the event.
+- `event.logIndex` – Index of the log within the block.
+- `event.block` – Block fields (By default: `number`, `timestamp`, `hash`).
+- `event.transaction` – Transaction fields (eg `hash`, `gasUsed`, etc. Empty by default).
+
+<Tip>
+All addresses returned in the `event` object, such as `event.transaction.from`, `event.transaction.to`, and `event.srcAddress`, are [EIP-55](https://eips.ethereum.org/EIPS/eip-55) checksummed. Use `.toLowerCase()` if you specifically need lowercase values.
+</Tip>
+
+<Note>
+Configure block and transaction fields with [`field_selection`](/HyperIndex/Guides/configuration-file#field-selection) in your `config.yaml` file.
+</Note>
+
+**Example event type definition:**
+
+```typescript
+type Event<Params, TransactionFields, BlockFields> = {
+  params: Params;
+  chainId: 1 | 137;
+  srcAddress: string;
+  logIndex: number;
+  transaction: TransactionFields;
+  block: BlockFields;
+};
+```
+
+---
+
+## Context Object
+
+The handler `context` provides methods to interact with entities stored in the database.
+
+### Retrieving Entities
+
+Retrieve entities from the database using `context.Entity.get` where `Entity` is the name of the entity you want to retrieve, which is defined in your [schema.graphql](/HyperIndex/Guides/schema-file) file.
+
+```typescript
+await context.Entity.get(entityId);
+```
+
+It'll return `Entity` object or `undefined` if the entity doesn't exist.
+
+Starting from `envio@2.22.0` you can use `context.Entity.getOrThrow` to conveniently throw an error if the entity doesn't exist:
+
+```typescript
+const pool = await context.Pool.getOrThrow(poolId);
+// Will throw: Entity 'Pool' with ID '...' is expected to exist.
+
+// Or you can pass a custom message as a second argument:
+const pool = await context.Pool.getOrThrow(
+  poolId,
+  `Pool with ID ${poolId} is expected.`
+);
+```
+
+Or use `context.Entity.getOrCreate` to automatically create an entity with default values if it doesn't exist:
+
+```typescript
+const pool = await context.Pool.getOrCreate({
+  id: poolId,
+  totalValueLockedETH: 0n,
+});
+
+// Which is equivalent to:
+let pool = await context.Pool.get(poolId);
+if (!pool) {
+  pool = {
+    id: poolId,
+    totalValueLockedETH: 0n,
+  };
+  context.Pool.set(pool);
+}
+```
+
+### Retrieving Entities by Field
+
+```typescript
+ERC20.Approval.handler(async ({ event, context }) => {
+  // Find all approvals for this specific owner
+  const currentOwnerApprovals = await context.Approval.getWhere.owner_id.eq(
+    event.params.owner
+  );
+
+  // Process all the owner's approvals efficiently
+  for (const approval of currentOwnerApprovals) {
+    // Process each approval
+  }
+});
+```
+
+You can also use `context.<Entity>.getWhere.<FieldName>.gt` to get all entities where the field value is greater than the given value.
+
+**Important:**
+
+- This feature requires [Preload Optimization](/HyperIndex/Advanced/preload-optimization) to be enabled.
+
+  - Either by `preload_handlers: true` in your `config.yaml` file
+  - Or by using [Loaders](/HyperIndex/Advanced/loaders) (Deprecated)
+
+- Works with any field that:
+
+  - Is used in a relationship with the [`@derivedFrom`](/HyperIndex/Guides/schema-file#relationships-one-to-many-derivedfrom) directive
+  - Has an [`@index`](/HyperIndex/Advanced/performance/database-performance-optimization#creating-custom-indices-in-your-schema) directive
+
+- Potential Memory Issues: Very large `getWhere` queries might cause memory overflows.
+- Tip: Try to put the `getWhere` query to the top of the handler, to make sure it's being preloaded. Read more about how [Preload Optimization](/HyperIndex/Advanced/preload-optimization) works.
+
+### Modifying Entities
+
+Use `context.Entity.set` to create or update an entity:
+
+```typescript
+context.Entity.set({
+  id: entityId,
+  ...otherEntityFields,
+});
+```
+
+<Note>
+Both `context.Entity.set` and `context.Entity.deleteUnsafe` methods use the In-Memory Storage under the hood and don't require `await` in front of them.
+</Note>
+
+### Referencing Linked Entities
+
+When your schema defines a field that links to another entity type, set the relationship using `<field>_id` with the referenced entity's `id`. You are storing the ID, not the full entity object.
+
+```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+type A {
+  id: ID!
+  b: B!
+}
+
+type B {
+  id: ID!
+}
+```
+
+```typescript
+context.A.set({
+  id: aId,
+  b_id: bId, // ID of the linked B entity
+});
+```
+
+HyperIndex automatically resolves `A.b` based on the stored `b_id` when querying the API.
+
+### Deleting Entities (Unsafe)
+
+To delete an entity:
+
+```typescript
+context.Entity.deleteUnsafe(entityId);
+```
+
+<Warning>
+The `deleteUnsafe` method is experimental and **unsafe**. You need to manually handle all entity references after deletion to maintain database consistency.
+</Warning>
+
+### Updating Specific Entity Fields
+
+Use the following approach to update specific fields in an existing entity:
+
+<CodeGroup>
+
+```typescript icon="/icons/typescript-icon.png" TypeScript
+const pool = await context.Pool.get(poolId);
+if (pool) {
+  context.Pool.set({
+    ...pool,
+    totalValueLockedETH: pool.totalValueLockedETH.plus(newDeposit),
+  });
+}
+```
+
+```javascript icon="/icons/javascript-icon.png" JavaScript
+const pool = await context.Pool.get(poolId);
+if (pool) {
+  context.Pool.set({
+    ...pool,
+    totalValueLockedETH: pool.totalValueLockedETH.plus(newDeposit),
+  });
+}
+```
+
+```rescript icon="/icons/rescript-icon.png" ReScript
+let pool = await context.pool.get(poolId);
+pool->Option.forEach(pool => {
+  context.pool.set({
+    ...pool,
+    totalValueLockedETH: pool.totalValueLockedETH.plus(newDeposit),
+  });
+});
+```
+
+</CodeGroup>
+
+### `context.log`
+
+The context object also provides a logger that you can use to log messages to the console. Compared to `console.log` calls, these logs will be displayed on our [Hosted Service](/HyperIndex/Hosted_Service/hosted-service) runtime logs page.
+
+Read more in the [Logging Guide](/HyperIndex/Troubleshoot/logging).
+
+### `context.isPreload`
+
+If you need to skip the preload phase for CPU-intensive operations or to perform certain actions only once per event, you can use `context.isPreload`.
+
+```typescript
+ERC20.Transfer.handler(async ({ event, context }) => {
+  // Load existing data efficiently
+  const [sender, receiver] = await Promise.all([
+    context.Account.getOrThrow(event.params.from),
+    context.Account.getOrThrow(event.params.to),
+  ]);
+
+  // Skip expensive operations during preload
+  if (context.isPreload) {
+    return;
+  }
+
+  // CPU-intensive calculations only happen once
+  const complexCalculation = performExpensiveOperation(event.params.value); // Placeholder function for demonstration
+
+  // Create or update sender account
+  context.Account.set({
+    id: event.params.from,
+    balance: sender.balance - event.params.value,
+    computedValue: complexCalculation,
+  });
+  // Create or update receiver account
+  context.Account.set({
+    id: event.params.to,
+    balance: receiver.balance + event.params.value,
+  });
+});
+```
+
+**Note:** While `context.isPreload` can be useful for bypassing double execution, it's recommended to use the [Effect API](/HyperIndex/Advanced/effect-api) for external calls instead, as it provides automatic batching and memoization benefits.
+
+## External Calls
+
+Envio indexer runs using Node.js runtime. This means that you can use `fetch` or any other library like `viem` to perform external calls from your handlers.
+
+Note that with [Preload Optimization](/HyperIndex/Advanced/preload-optimization) all handlers run twice. But with [Effect API](/HyperIndex/Advanced/effect-api) this behavior makes your external calls run in parallel, while keeping the processing data consistent.
+
+Check out our [IPFS Integration](/HyperIndex/Guides/ipfs), [Accessing Contract State](/HyperIndex/Guides/contract-state) and [Effect API](/HyperIndex/Advanced/effect-api) guides for more information.
+
+### `context.effect`
+
+Define an effect and use it in your handler with `context.effect`:
+
+```typescript
+import { experimental_createEffect, S } from "envio";
+import { ERC20 } from "generated";
+
+// Define an effect that will be called from the handler.
+const getMetadata = experimental_createEffect(
+  {
+    name: "getMetadata",
+    input: S.string,
+    output: {
+      description: S.string,
+      value: S.bigint,
+    },
+    cache: true, // Optionally persist the results in the database
+  },
+  ({ input }) => {
+    const response = await fetch(`https://api.example.com/metadata/${input}`);
+    const data = await response.json();
+    return {
+      description: data.description,
+      value: data.value,
+    };
+  }
+);
+
+ERC20.Transfer.handler(async ({ event, context }) => {
+  // Load metadata for the token.
+  // This will be executed in parallel for all events in the batch.
+  // The call is automatically memoized, so you don't need to worry about duplicate requests.
+  const sender = await context.effect(getMetadata, event.params.from);
+
+  // Process the transfer with the pre-loaded data
+});
+```
+
+---
+
+## Accessing `config.yaml` Data in Handlers
+
+You can access your indexer configuration within handlers using `getConfigByChainId`:
+
+```typescript
+import { getGeneratedByChainId } from "generated/src/ConfigYAML.gen";
+
+Greeter.NewGreeting.handler(async ({ event, context }) => {
+  const config = getGeneratedByChainId(event.chainId);
+});
+```
+
+This exposes configuration data such as:
+
+- `syncSource`, `startBlock`, `confirmedBlockThreshold`
+- Contract-specific data (`abi`, `addresses`, `events`)
+
+---
+
+## Performance Considerations
+
+For performance optimization and best practices, refer to:
+
+- [Benchmarking](/HyperIndex/Advanced/performance/benchmarking)
+- [Preload Optimization](/HyperIndex/Advanced/preload-optimization)
+
+These guides offer detailed recommendations on optimizing entity loading and indexing performance.
+
+---
+
