@@ -1,0 +1,22 @@
+/* Custom navigation alignment - split left and right */
+.nav-tabs {
+  display: flex !important;
+  width: 100% !important;
+}
+
+/* Push the 4th tab (Showcase) to the right, Blog will follow */
+.nav-tabs-item:nth-child(4) {
+  margin-left: auto !important;
+}
+
+/* Alternative selectors in case the structure is different */
+nav[role="navigation"] > div {
+  display: flex !important;
+  width: 100% !important;
+}
+
+/* Target Showcase and Blog tabs specifically if they have data attributes */
+[data-tab="Showcase"] {
+  margin-left: auto !important;
+}
+
