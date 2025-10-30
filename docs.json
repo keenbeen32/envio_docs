@@ -13,6 +13,9 @@
     "custom_css/sidebar.css",
     "custom_css/infobox.css"
   ],
+  "scripts": [
+    "custom_css/sidebar-icons.js"
+  ],
   "navigation": {
     "tabs": [
       {
