@@ -10,7 +10,8 @@
   "favicon": "/favicon.svg",
   "styles": [
     "custom_css/navbar.css",
-    "custom_css/sidebar.css"
+    "custom_css/sidebar.css",
+    "custom_css/infobox.css"
   ],
   "navigation": {
     "tabs": [

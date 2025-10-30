@@ -1,15 +1,10 @@
 ---
 title: "Overview"
-description: "Explore HyperIndex, a blazing-fast multichain indexer for real-time blockchain data."
 ---
-
-# HyperIndex: Fast Multichain Indexer
 
 **HyperIndex** is a blazing-fast, developer-friendly multichain indexer, optimized for both local development and reliable hosted deployment. It empowers developers to effortlessly build robust backends for blockchain applications.
 
-![Sync Process](/images/sync.gif)
-
-<Info>
+<Callout icon="info-circle" color="#3B82F6" iconType="regular">
 **HyperIndex & HyperSync**
 
 **HyperIndex** is Envio's full-featured blockchain indexing framework that transforms on-chain events into structured, queryable databases with GraphQL APIs.
@@ -17,29 +12,77 @@ description: "Explore HyperIndex, a blazing-fast multichain indexer for real-tim
 **HyperSync** is the high-performance data engine that powers HyperIndex. It provides the raw blockchain data access layer, delivering up to 2000x faster performance than traditional RPC endpoints.
 
 While HyperIndex gives you a complete indexing solution with schema management and event handling, HyperSync can be used directly for custom data pipelines and specialized applications.
-</Info>
+</Callout>
 
 ---
 
 ## Key Features
 
-- **[Quickstart templates](/HyperIndex/Tutorials/greeter-tutorial)** – Rapidly bootstrap your indexer.
-- **[Real-time indexing](/HyperIndex/Advanced/performance/latency-at-head)** – Instantly track blockchain events.
-- **[Multichain indexing](/HyperIndex/Advanced/multichain-indexing)** – Supports multiple blockchains simultaneously.
-- **[Local development](/HyperIndex/Guides/running-locally)** – Full-featured local environment with Docker.
-- **[Reorg support](/HyperIndex/Advanced/reorgs-support)** – Gracefully handles blockchain reorganizations.
-- **[GraphQL API](/HyperIndex/Guides/navigating-hasura)** – Easy-to-query indexed data.
-- **[Cross-platform support](/HyperIndex/supported-networks/index)** – Index any EVM-compatible blockchain and Fuel.
-- **[High performance](/HyperIndex/Advanced/performance/benchmarking)** – Historical backfills at over 5,000+ events per second.
-- **[Indexer auto-generation](/HyperIndex/contract-import)** – Generate indexers directly from smart contract addresses.
-- **[Flexible language support](/HyperIndex/Advanced/terminology#programming-languages)** – JavaScript, TypeScript, and ReScript.
-- **[Factory contract support](/HyperIndex/Advanced/dynamic-contracts)** – Index data from 100,000+ factory contracts seamlessly.
-- **[On-chain & off-chain data integration](/HyperIndex/Guides/contract-state)** – Easily combine multiple data sources.
-- **[Self-hosted & managed options](/HyperIndex/Hosted_Service/hosted-service)** – Run your own setup or use HyperIndex hosted services.
-- **[Detailed logging & error reporting](/HyperIndex/Troubleshoot/logging)** – Debug and optimize with clarity.
-- **[External API actions](/HyperIndex/Guides/ipfs)** – Trigger external services based on blockchain events.
-- **[Wildcard topic indexing](/HyperIndex/Advanced/wildcard-indexing)** – Flexible indexing based on event topics.
-- **[Fallback RPC data sources](/HyperIndex/Advanced/hypersync#improving-resilience-with-rpc-fallback)** – Enhanced reliability with RPC connections.
+<CardGroup cols={4}>
+  <Card title="Quickstart Templates" icon="rocket" href="/HyperIndex/Tutorials/greeter-tutorial">
+    Rapidly bootstrap your indexer
+  </Card>
+  
+  <Card title="Real-time Indexing" icon="bolt" href="/HyperIndex/Advanced/performance/latency-at-head">
+    Instantly track blockchain events
+  </Card>
+  
+  <Card title="Multichain Support" icon="layer-group" href="/HyperIndex/Advanced/multichain-indexing">
+    Index multiple blockchains simultaneously
+  </Card>
+  
+  <Card title="Local Development" icon="laptop-code" href="/HyperIndex/Guides/running-locally">
+    Full-featured local environment with Docker
+  </Card>
+  
+  <Card title="Reorg Support" icon="rotate" href="/HyperIndex/Advanced/reorgs-support">
+    Gracefully handles blockchain reorganizations
+  </Card>
+  
+  <Card title="GraphQL API" icon="code" href="/HyperIndex/Guides/navigating-hasura">
+    Easy-to-query indexed data
+  </Card>
+  
+  <Card title="Cross-platform" icon="network-wired" href="/HyperIndex/supported-networks/index">
+    Index any EVM-compatible blockchain and Fuel
+  </Card>
+  
+  <Card title="High Performance" icon="gauge-high" href="/HyperIndex/Advanced/performance/benchmarking">
+    Historical backfills at 5,000+ events per second
+  </Card>
+  
+  <Card title="Auto-generation" icon="wand-magic-sparkles" href="/HyperIndex/contract-import">
+    Generate indexers from smart contract addresses
+  </Card>
+  
+  <Card title="Language Support" icon="file-code" href="/HyperIndex/Advanced/terminology#programming-languages">
+    JavaScript, TypeScript, and ReScript
+  </Card>
+  
+  <Card title="Factory Contracts" icon="industry" href="/HyperIndex/Advanced/dynamic-contracts">
+    Index data from 100,000+ factory contracts
+  </Card>
+  
+  <Card title="Data Integration" icon="link" href="/HyperIndex/Guides/contract-state">
+    Combine on-chain & off-chain data sources
+  </Card>
+  
+  <Card title="Hosting Options" icon="cloud" href="/HyperIndex/Hosted_Service/hosted-service">
+    Self-hosted or managed services
+  </Card>
+  
+  <Card title="Logging & Errors" icon="bug" href="/HyperIndex/Troubleshoot/logging">
+    Debug and optimize with clarity
+  </Card>
+  
+  <Card title="External APIs" icon="globe" href="/HyperIndex/Guides/ipfs">
+    Trigger external services from events
+  </Card>
+  
+  <Card title="Wildcard Indexing" icon="asterisk" href="/HyperIndex/Advanced/wildcard-indexing">
+    Flexible indexing based on event topics
+  </Card>
+</CardGroup>
 
 ---
 
@@ -60,12 +103,4 @@ For more details about API tokens, including how to generate and implement them,
 
 Upcoming features on our development roadmap:
 
-- **⬜ RPC client with caching** – Improved indexing performance through cached RPC calls.
-
----
-
-## 🔗 Quick Links
-
-- [GitHub Repository](https://github.com/enviodev/hyperindex) ⭐
-- [Join our Discord Community](https://discord.gg/Q9qt8gZ2fX)
-
+- **RPC client with caching** – Improved indexing performance through cached RPC calls.
