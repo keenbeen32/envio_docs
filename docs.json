@@ -182,7 +182,6 @@
           {
             "group": "Articles",
             "pages": [
-              "blog",
               "blog/2023-08-08-methods-to-query-blockchain-data",
               "blog/2023-08-17-what-is-an-indexer",
               "blog/2023-08-22-envio-grant-program-is-live",
@@ -220,7 +219,33 @@
               "blog/2024-09-02-envio-community-update-aug-2024",
               "blog/2024-09-27-case-study-limitless",
               "blog/2024-10-02-envio-community-update-sep-2024",
-              "blog/2024-10-09-case-study-bridgg-op-superchain"
+              "blog/2024-10-09-case-study-bridgg-op-superchain",
+              "blog/2024-10-15-ethonline24-envio-hackathon-winners",
+              "blog/2024-10-29-envio-community-update-oct-2024",
+              "blog/2024-11-08-hosted-service-v2",
+              "blog/2024-11-13-how-to-cut-aws-cloud-costs",
+              "blog/2024-11-26-indexing-and-reorgs",
+              "blog/2024-11-28-envio-community-update-november-2024",
+              "blog/2024-12-09-tokenizing-real-world-assets",
+              "blog/2024-12-18-case-study-zkpass",
+              "blog/2024-12-24-envio-community-update-december",
+              "blog/2025-01-21-what-is-a-blockchain-indexer",
+              "blog/2025-01-30-envio-developer-update-january",
+              "blog/2025-02-27-envio-dev-update-feb",
+              "blog/2025-03-17-what-is-multi-chain-indexing",
+              "blog/2025-03-26-envio-supports-70-networks",
+              "blog/2025-03-31-envio-dev-update-march-2025",
+              "blog/2025-04-15-oracle-wars",
+              "blog/2025-04-25-developer-update-april-2025",
+              "blog/2025-05-16-monad-hackathon-winners-2025",
+              "blog/2025-05-29-developer-update-may-2025",
+              "blog/2025-06-12-how-to-index-monad-data-using-envio",
+              "blog/2025-06-17-how-to-index-megaeth-data-using-envio",
+              "blog/2025-06-24-building-visualizers-and-dashboards-on-monad",
+              "blog/2025-06-24-dev-update-june-2025",
+              "blog/2025-07-30-dev-update-july-2025",
+              "blog/2025-08-29-dev-update-august-2025",
+              "blog/2025-09-30-dev-update-september-2025"
             ]
           }
         ]
