@@ -202,7 +202,7 @@ Variants:
 
 ## Definitions
 
-### EcosystemTag {#def-ecosystemtag}
+### EcosystemTag
 
 - **type**: `enum (1 values)`
 - **allowed**: `evm`
@@ -211,7 +211,7 @@ Variants:
 ecosystem: evm
 ```
 
-### GlobalContract_for_ContractConfig {#def-globalcontractforcontractconfig}
+### GlobalContract_for_ContractConfig globalcontractforcontractconfig}
 
 - **type**: `object`
 - **required**: `name`, `handler`, `events`
@@ -230,7 +230,7 @@ contracts:
       - event: "NewGreeting(address user, string greeting)"
 ```
 
-### EventConfig {#def-eventconfig}
+### EventConfig eventconfig}
 
 - **type**: `object`
 - **required**: `event`
@@ -252,7 +252,7 @@ contracts:
             - transactionIndex
 ```
 
-### FieldSelection {#def-fieldselection}
+### FieldSelection fieldselection}
 
 - **type**: `object`
 
@@ -275,7 +275,7 @@ events:
         - miner
 ```
 
-### Network {#def-network}
+### Network network}
 
 - **type**: `object`
 - **required**: `id`, `start_block`, `contracts`
@@ -300,7 +300,7 @@ networks:
         address: 0x1111111111111111111111111111111111111111
 ```
 
-### RpcConfig {#def-rpcconfig}
+### RpcConfig rpcconfig}
 
 - **type**: `object`
 - **required**: `url`
@@ -323,7 +323,7 @@ networks:
       initial_block_interval: 1000
 ```
 
-### NetworkRpc {#def-networkrpc}
+### NetworkRpc networkrpc}
 
 - **type**: `anyOf(string | object<Rpc> | array<object<Rpc>>)`
 
@@ -338,7 +338,7 @@ networks:
     rpc: https://eth.llamarpc.com
 ```
 
-### Rpc {#def-rpc}
+### Rpc rpc}
 
 - **type**: `object`
 - **required**: `url`, `for`
@@ -362,7 +362,7 @@ networks:
         for: sync
 ```
 
-### For {#def-for}
+### For for}
 
 - **type**: `oneOf(const sync | const fallback)`
 
@@ -370,7 +370,7 @@ Variants:
 - `1`: `const sync`
 - `2`: `const fallback`
 
-### HypersyncConfig {#def-hypersyncconfig}
+### HypersyncConfig hypersyncconfig}
 
 - **type**: `object`
 - **required**: `url`
@@ -385,7 +385,7 @@ networks:
       url: https://eth.hypersync.xyz
 ```
 
-### NetworkContract_for_ContractConfig {#def-networkcontractforcontractconfig}
+### NetworkContract_for_ContractConfig networkcontractforcontractconfig}
 
 - **type**: `object`
 - **required**: `name`
@@ -411,7 +411,7 @@ networks:
           - event: Transfer(address indexed from, address indexed to, uint256 value)
 ```
 
-### Addresses {#def-addresses}
+### Addresses addresses}
 
 - **type**: `anyOf(anyOf(string | integer) | array<anyOf(string | integer)>)`
 
@@ -429,7 +429,7 @@ networks:
           - 0x2222222222222222222222222222222222222222
 ```
 
-### EventDecoder {#def-eventdecoder}
+### EventDecoder eventdecoder}
 
 - **type**: `enum (2 values)`
 - **allowed**: `viem`, `hypersync-client`
@@ -438,7 +438,7 @@ networks:
 event_decoder: hypersync-client
 ```
 
-### AddressFormat {#def-addressformat}
+### AddressFormat addressformat}
 
 - **type**: `enum (2 values)`
 - **allowed**: `checksum`, `lowercase`
