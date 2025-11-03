@@ -107,12 +107,6 @@
             ]
           },
           {
-            "group": "Supported Networks",
-            "pages": [
-              "HyperIndex/supported-networks/index"
-            ]
-          },
-          {
             "group": "Other",
             "pages": [
               "HyperIndex/fuel/fuel",
@@ -188,7 +182,45 @@
           {
             "group": "Articles",
             "pages": [
-              "blog"
+              "blog",
+              "blog/2023-08-08-methods-to-query-blockchain-data",
+              "blog/2023-08-17-what-is-an-indexer",
+              "blog/2023-08-22-envio-grant-program-is-live",
+              "blog/2023-08-31-navigating-challenges-in-blockchain-indexing",
+              "blog/2023-09-06-envio-community-update-1",
+              "blog/2023-09-27-envio-community-update-2",
+              "blog/2023-10-04-how-to-become-a-blockchain-dapp-developer",
+              "blog/2023-10-19-envio-celebrates-first-grantee-project-multi-chain-liquidation-metrics-indexer",
+              "blog/2023-10-24-indexer-benchmarking-results",
+              "blog/2023-10-26-envio-community-update-3",
+              "blog/2023-11-09-powers-of-dedicated-hosting-for-web3-apps",
+              "blog/2023-11-15-simplify-data-retrieval-multi-chain-dapps",
+              "blog/2023-11-23-envio-bounty-poap-multi-chain-indexer",
+              "blog/2023-11-29-envio-community-update-4",
+              "blog/2023-12-13-envio-bounty-erc4626-token-vault-indexer",
+              "blog/2023-12-19-envio-community-update-5",
+              "blog/2024-01-17-envio-empowers-jarvis-network",
+              "blog/2024-01-31-envio-community-update-6",
+              "blog/2024-02-12-envio-azuro-developer-grant-multi-chain-open-source-indexer",
+              "blog/2024-02-20-envio-data-indexing-on-lukso",
+              "blog/2024-03-01-envio-community-update-7",
+              "blog/2024-03-27-envio-community-update-8",
+              "blog/2024-03-27-envio-data-indexing-on-harmony",
+              "blog/2024-03-28-envio-celebrates-azuro-indexer-grantee",
+              "blog/2024-04-22-envio-hypersync-powers-data-access-on-fuel-network",
+              "blog/2024-05-08-envio-community-update-9",
+              "blog/2024-05-24-case-study-peppy-finance",
+              "blog/2024-05-30-envio-community-update-may-2024",
+              "blog/2024-07-01-envio-community-update-june-2024",
+              "blog/2024-07-17-case-study-gblast",
+              "blog/2024-07-18-data-indexing-on-fuel",
+              "blog/2024-08-02-envio-community-update-july-2024",
+              "blog/2024-08-13-case-study-sablier",
+              "blog/2024-08-19-building-chaindensity",
+              "blog/2024-09-02-envio-community-update-aug-2024",
+              "blog/2024-09-27-case-study-limitless",
+              "blog/2024-10-02-envio-community-update-sep-2024",
+              "blog/2024-10-09-case-study-bridgg-op-superchain"
             ]
           }
         ]
