@@ -52,7 +52,7 @@ contracts:
 address: "0xdEe21B97AB77a16B4b236F952e586cf8408CF32A"
 ```
 
-The Greeter indexer listens to `NewGreeting` events from both the Polygon and Linea [Greeter contracts](https://docs.linea.build/blog/index-greeter-contract-using-envio) to update the Greeting entity.
+The Greeter indexer listens to `NewGreeting` events from both the Polygon and Linea [Greeter contracts](https://docs.linea.build/Blog/index-greeter-contract-using-envio) to update the Greeting entity.
 
 Through Envio's multi-chain indexing, builders can specify their event handler to operate against a common schema. The `schema.graphql` file would look like this:
 
@@ -90,7 +90,7 @@ let currentUser = context.User.get(event.params.user);
 
 For a more comprehensive walkthrough on this feature, the documentation can be found [here](/HyperIndex/Advanced/multichain-indexing).
 
-For a more complicated multi-chain indexing example, builders are encouraged to explore the [Compound V2 Liquidation Metrics](/HyperIndex/Examples/example-velodrome-aerodrome) indexer, built by Envio's first successful Grantee as part of the [Envio "Build Bigger. Ship Faster" Program](/blog/2023-08-22-envio-grant-program-is-live).
+For a more complicated multi-chain indexing example, builders are encouraged to explore the [Compound V2 Liquidation Metrics](/HyperIndex/Examples/example-velodrome-aerodrome) indexer, built by Envio's first successful Grantee as part of the [Envio "Build Bigger. Ship Faster" Program](/Blog/2023-08-22-envio-grant-program-is-live).
 
 ## Conclusion
 
