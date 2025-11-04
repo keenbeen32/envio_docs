@@ -7,31 +7,13 @@ description: "Learn how to register and manage event handlers for efficient data
 
 A handler is a function that receives blockchain data, processes it, and inserts it into the database. You can register handlers in the file defined in the `handler` field in your `config.yaml` file. By default this is `src/EventHandlers.*` file.
 
-<CodeGroup>
-
-```typescript icon="/icons/typescript-icon.png" TypeScript
+```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
 import { <CONTRACT_NAME> } from "generated";
 
 <CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
   // Your logic here
 });
 ```
-
-```javascript icon="/icons/javascript-icon.png" JavaScript
-const { <CONTRACT_NAME> } = require("generated");
-
-<CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
-  // Your logic here
-});
-```
-
-```rescript icon="/icons/rescript-icon.png" ReScript
-Handlers.<CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
-  // Your logic here
-});
-```
-
-</CodeGroup>
 
 <Note>
 The `generated` module contains code and types based on `config.yaml` and `schema.graphql` files. Update it by running **`pnpm codegen`** command whenever you change these files.
@@ -41,9 +23,7 @@ The `generated` module contains code and types based on `config.yaml` and `schem
 
 Here's a handler example for the `NewGreeting` event. It belongs to the `Greeter` contract from our beginners [Greeter Tutorial](/HyperIndex/Tutorials/greeter-tutorial):
 
-<CodeGroup>
-
-```typescript icon="/icons/typescript-icon.png" TypeScript
+```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
 import { Greeter, User } from "generated";
 
 // Handler for the NewGreeting event
@@ -70,65 +50,6 @@ Greeter.NewGreeting.handler(async ({ event, context }) => {
   context.User.set(userEntity); // Set the User entity in the DB
 });
 ```
-
-```javascript icon="/icons/javascript-icon.png" JavaScript
-const { Greeter } = require("generated");
-
-// Handler for the NewGreeting event
-Greeter.NewGreeting.handler(async ({ event, context }) => {
-  const userId = event.params.user; // The id for the User entity
-  const latestGreeting = event.params.greeting; // The greeting string that was added
-  const currentUserEntity = await context.User.get(userId); // Optional user entity that may already exist
-
-  // Update or create a new User entity
-  const userEntity = currentUserEntity
-    ? {
-        id: userId,
-        latestGreeting,
-        numberOfGreetings: currentUserEntity.numberOfGreetings + 1,
-        greetings: [...currentUserEntity.greetings, latestGreeting],
-      }
-    : {
-        id: userId,
-        latestGreeting,
-        numberOfGreetings: 1,
-        greetings: [latestGreeting],
-      };
-
-  context.User.set(userEntity); // Set the User entity in the DB
-});
-```
-
-```rescript icon="/icons/rescript-icon.png" ReScript
-open Types
-
-// Handler for the NewGreeting event
-Handlers.Greeter.NewGreeting.handler(async ({event, context}) => {
-  let userId = event.params.user->Address.toString // The id for the User entity
-  let latestGreeting = event.params.greeting // The greeting string that was added
-  let maybeCurrentUserEntity = await context.user.get(userId) // Optional User entity that may already exist
-
-  // Update or create a new User entity
-  let userEntity: Entities.User.t = switch maybeCurrentUserEntity {
-  | Some(existingUserEntity) => {
-      id: userId,
-      latestGreeting,
-      numberOfGreetings: existingUserEntity.numberOfGreetings + 1,
-      greetings: existingUserEntity.greetings->Belt.Array.concat([latestGreeting]),
-    }
-  | None => {
-      id: userId,
-      latestGreeting,
-      numberOfGreetings: 1,
-      greetings: [latestGreeting],
-    }
-  }
-
-  context.user.set(userEntity) // Set the User entity in the DB
-})
-```
-
-</CodeGroup>
 
 ### Preload Optimization
 
@@ -349,9 +270,7 @@ The `deleteUnsafe` method is experimental and **unsafe**. You need to manually h
 
 Use the following approach to update specific fields in an existing entity:
 
-<CodeGroup>
-
-```typescript icon="/icons/typescript-icon.png" TypeScript
+```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
 const pool = await context.Pool.get(poolId);
 if (pool) {
   context.Pool.set({
@@ -360,28 +279,6 @@ if (pool) {
   });
 }
 ```
-
-```javascript icon="/icons/javascript-icon.png" JavaScript
-const pool = await context.Pool.get(poolId);
-if (pool) {
-  context.Pool.set({
-    ...pool,
-    totalValueLockedETH: pool.totalValueLockedETH.plus(newDeposit),
-  });
-}
-```
-
-```rescript icon="/icons/rescript-icon.png" ReScript
-let pool = await context.pool.get(poolId);
-pool->Option.forEach(pool => {
-  context.pool.set({
-    ...pool,
-    totalValueLockedETH: pool.totalValueLockedETH.plus(newDeposit),
-  });
-});
-```
-
-</CodeGroup>
 
 ### `context.log`
 
