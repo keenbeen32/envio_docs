@@ -8,6 +8,9 @@
   },
   "engines": {
     "node": ">=20.0"
+  },
+  "devDependencies": {
+    "mint": "^4.2.186"
   }
 }
 
