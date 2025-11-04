@@ -95,17 +95,13 @@ const generateHyperRPCMDXTable = (data) => {
     const isTracesNetwork = chain.name.toLowerCase().includes("traces");
     const chainIdSuffix = isTracesNetwork ? `-traces` : "";
     const url = `https://${chain.name}.rpc.hypersync.xyz or https://${chain.chain_id}${chainIdSuffix}.rpc.hypersync.xyz`;
-    const supportsTraces =
-      chain.additional_features && chain.additional_features.includes("TRACES")
-        ? TICK
-        : "";
 
-    tableRows += `| ${networkName} | ${chain.chain_id} | ${url} | ${supportsTraces} |\n`;
+    tableRows += `| ${networkName} | ${chain.chain_id} | ${url} |\n`;
   });
 
   return `<Card>
-| Network Name | Network ID | URL | Supports Traces |
-| --- | --- | --- | --- |
+| Network Name | Network ID | URL |
+| --- | --- | --- |
 ${tableRows}</Card>`;
 };
 
@@ -211,19 +207,18 @@ title: ${capitalizedTitle}
 description: Index ${capitalizedTitle} data using Envio HyperIndex
 ---
 
-# ${capitalizedTitle}
-
 ## Indexing ${capitalizedTitle} Data with Envio
 
+<div style={{display: 'flex', justifyContent: 'center'}}>
+<Card style={{backgroundColor: '#f9fafb'}}>
 | **Field** | **Value** |
 | --- | --- |
 | **${capitalizedTitle} Chain ID** | ${network.chain_id} |
+| **Tier** | ${network.tier} ${tier} |
 | **HyperSync URL Endpoint** | [${hypersyncUrl1}](${hypersyncUrl1}) or [${hypersyncUrl2}](${hypersyncUrl2}) |
 | **HyperRPC URL Endpoint** | [${hyperrpcUrl1}](${hyperrpcUrl1}) or [${hyperrpcUrl2}](${hyperrpcUrl2}) |
-
-### Tier
-
-${network.tier} ${tier}
+</Card>
+</div>
 
 ### Overview
 
@@ -237,7 +232,7 @@ To get started, see our documentation or follow our quickstart [guide](/HyperInd
 
 ### Defining Network Configurations
 
-\`\`\`yaml
+\`\`\`yaml icon="/icons/yaml-icon.png" title="config.yaml"
 name: IndexerName # Specify indexer name
 description: Indexer Description # Include indexer description
 networks:
@@ -277,8 +272,6 @@ title: ${network.name}
 description: Index ${network.name} data using Envio HyperIndex via RPC
 ---
 
-# ${network.name}
-
 ## Indexing ${network.name} Data with Envio via RPC
 
 <Warning>
@@ -299,7 +292,7 @@ To use ${network.name}, define the RPC configuration in your network configurati
 You may need to adjust more parameters of the [RPC configuration](/HyperIndex/Advanced/rpc-sync) to support the specific RPC provider.
 </Info>
 
-\`\`\`yaml
+\`\`\`yaml icon="/icons/yaml-icon.png" title="config.yaml"
 name: IndexerName # Specify indexer name
 description: Indexer Description # Include indexer description
 networks:
