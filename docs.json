@@ -23,6 +23,7 @@
         "groups": [
           {
             "group": "Introduction",
+            "expanded": true,
             "pages": [
               "HyperIndex/Introduction/overview",
               "HyperIndex/Introduction/getting-started",
@@ -33,6 +34,7 @@
           },
           {
             "group": "Guides",
+            "expanded": true,
             "pages": [
               "HyperIndex/Guides/configuration-file",
               "HyperIndex/Guides/schema-file",
@@ -46,6 +48,7 @@
           },
           {
             "group": "Examples",
+            "expanded": true,
             "pages": [
               "HyperIndex/Examples/example-uniswap-v4",
               "HyperIndex/Examples/example-sablier",
@@ -54,6 +57,7 @@
           },
           {
             "group": "Hosted Service",
+            "expanded": true,
             "pages": [
               "HyperIndex/Hosted_Service/hosted-service",
               "HyperIndex/Hosted_Service/hosted-service-features",
@@ -65,6 +69,7 @@
           },
           {
             "group": "Tutorials",
+            "expanded": true,
             "pages": [
               "HyperIndex/Tutorials/tutorial-op-bridge-deposits",
               "HyperIndex/Tutorials/tutorial-erc20-token-transfers",
@@ -76,6 +81,7 @@
           },
           {
             "group": "Advanced",
+            "expanded": true,
             "pages": [
               "HyperIndex/Advanced/dynamic-contracts",
               "HyperIndex/Advanced/wildcard-indexing",
@@ -99,6 +105,7 @@
           },
           {
             "group": "Troubleshoot",
+            "expanded": true,
             "pages": [
               "HyperIndex/Troubleshoot/logging",
               "HyperIndex/Troubleshoot/common-issues",
@@ -107,12 +114,212 @@
             ]
           },
           {
-            "group": "Other",
+            "group": "Supported Networks",
+            "expanded": false,
             "pages": [
-              "HyperIndex/fuel/fuel",
-              "HyperIndex/licensing",
-              "HyperIndex/terms-of-service",
-              "HyperIndex/privacy-policy"
+              "HyperIndex/supported-networks/index",
+              "HyperIndex/supported-networks/any-evm-with-rpc",
+              "HyperIndex/supported-networks/local-anvil",
+              "HyperIndex/supported-networks/local-hardhat",
+              "HyperIndex/supported-networks/0g-newton-testnet",
+              "HyperIndex/supported-networks/abstract",
+              "HyperIndex/supported-networks/aleph-zero-evm",
+              "HyperIndex/supported-networks/altlayer-op-demo-testnet",
+              "HyperIndex/supported-networks/ancient8",
+              "HyperIndex/supported-networks/arbitrum",
+              "HyperIndex/supported-networks/arbitrum-blueberry",
+              "HyperIndex/supported-networks/arbitrum-nova",
+              "HyperIndex/supported-networks/arbitrum-sepolia",
+              "HyperIndex/supported-networks/artela-testnet",
+              "HyperIndex/supported-networks/arthera-mainnet",
+              "HyperIndex/supported-networks/asset-chain-mainnet",
+              "HyperIndex/supported-networks/astar-zkevm",
+              "HyperIndex/supported-networks/astar-zkyoto",
+              "HyperIndex/supported-networks/aurora",
+              "HyperIndex/supported-networks/aurora-turbo",
+              "HyperIndex/supported-networks/avalanche",
+              "HyperIndex/supported-networks/b2-hub-testnet",
+              "HyperIndex/supported-networks/b3",
+              "HyperIndex/supported-networks/b3-sepolia-testnet",
+              "HyperIndex/supported-networks/base",
+              "HyperIndex/supported-networks/base-sepolia",
+              "HyperIndex/supported-networks/beam",
+              "HyperIndex/supported-networks/berachain",
+              "HyperIndex/supported-networks/berachain-artio-testnet",
+              "HyperIndex/supported-networks/bevm-mainnet",
+              "HyperIndex/supported-networks/bevm-testnet",
+              "HyperIndex/supported-networks/bitfinity-mainnet",
+              "HyperIndex/supported-networks/bitfinity-testnet",
+              "HyperIndex/supported-networks/bitgert-mainnet",
+              "HyperIndex/supported-networks/bitlayer",
+              "HyperIndex/supported-networks/blast",
+              "HyperIndex/supported-networks/blast-sepolia",
+              "HyperIndex/supported-networks/bob-mainnet",
+              "HyperIndex/supported-networks/boba",
+              "HyperIndex/supported-networks/boba-bnb-mainnet",
+              "HyperIndex/supported-networks/botanix-testnet",
+              "HyperIndex/supported-networks/bsc",
+              "HyperIndex/supported-networks/bsc-testnet",
+              "HyperIndex/supported-networks/canto",
+              "HyperIndex/supported-networks/canto-testnet",
+              "HyperIndex/supported-networks/celo",
+              "HyperIndex/supported-networks/celo-alfajores-testnet",
+              "HyperIndex/supported-networks/chainweb-testnet-20",
+              "HyperIndex/supported-networks/chainweb-testnet-21",
+              "HyperIndex/supported-networks/chainweb-testnet-22",
+              "HyperIndex/supported-networks/chainweb-testnet-23",
+              "HyperIndex/supported-networks/chainweb-testnet-24",
+              "HyperIndex/supported-networks/chiliz",
+              "HyperIndex/supported-networks/chiliz-testnet-spicy",
+              "HyperIndex/supported-networks/citrea-devnet",
+              "HyperIndex/supported-networks/citrea-testnet",
+              "HyperIndex/supported-networks/core",
+              "HyperIndex/supported-networks/creator-testnet",
+              "HyperIndex/supported-networks/cronos-zkevm",
+              "HyperIndex/supported-networks/cronos-zkevm-testnet",
+              "HyperIndex/supported-networks/crossfi-mainnet",
+              "HyperIndex/supported-networks/crossfi-testnet",
+              "HyperIndex/supported-networks/curtis",
+              "HyperIndex/supported-networks/cyber",
+              "HyperIndex/supported-networks/damon",
+              "HyperIndex/supported-networks/degen-chain",
+              "HyperIndex/supported-networks/dfk-chain",
+              "HyperIndex/supported-networks/dogechain-mainnet",
+              "HyperIndex/supported-networks/dogechain-testnet",
+              "HyperIndex/supported-networks/dos-chain",
+              "HyperIndex/supported-networks/energy-web",
+              "HyperIndex/supported-networks/eos",
+              "HyperIndex/supported-networks/eth",
+              "HyperIndex/supported-networks/etherlink-testnet",
+              "HyperIndex/supported-networks/exosama",
+              "HyperIndex/supported-networks/fantom",
+              "HyperIndex/supported-networks/fantom-testnet",
+              "HyperIndex/supported-networks/flare",
+              "HyperIndex/supported-networks/flare-songbird",
+              "HyperIndex/supported-networks/flow",
+              "HyperIndex/supported-networks/flow-testnet",
+              "HyperIndex/supported-networks/fraxtal",
+              "HyperIndex/supported-networks/fuel-mainnet",
+              "HyperIndex/supported-networks/fuel-testnet",
+              "HyperIndex/supported-networks/fuji",
+              "HyperIndex/supported-networks/gnosis",
+              "HyperIndex/supported-networks/gnosis-chiado",
+              "HyperIndex/supported-networks/gravity-alpha-mainnet",
+              "HyperIndex/supported-networks/harmony-shard-0",
+              "HyperIndex/supported-networks/heco-chain",
+              "HyperIndex/supported-networks/holesky",
+              "HyperIndex/supported-networks/hyperliquid",
+              "HyperIndex/supported-networks/immutable-zkevm",
+              "HyperIndex/supported-networks/immutable-zkevm-testnet",
+              "HyperIndex/supported-networks/incentiv",
+              "HyperIndex/supported-networks/ink",
+              "HyperIndex/supported-networks/iotex-network",
+              "HyperIndex/supported-networks/japan-open-chain",
+              "HyperIndex/supported-networks/kaia",
+              "HyperIndex/supported-networks/kakarot-starknet-sepolia",
+              "HyperIndex/supported-networks/kroma",
+              "HyperIndex/supported-networks/layeredge-testnet",
+              "HyperIndex/supported-networks/lightlink-pegasus-testnet",
+              "HyperIndex/supported-networks/lightlink-phoenix",
+              "HyperIndex/supported-networks/linea",
+              "HyperIndex/supported-networks/lisk",
+              "HyperIndex/supported-networks/lukso",
+              "HyperIndex/supported-networks/lukso-testnet",
+              "HyperIndex/supported-networks/manta",
+              "HyperIndex/supported-networks/manta-pacific-sepolia",
+              "HyperIndex/supported-networks/mantle",
+              "HyperIndex/supported-networks/megaeth-testnet",
+              "HyperIndex/supported-networks/megaeth-testnet2",
+              "HyperIndex/supported-networks/merlin",
+              "HyperIndex/supported-networks/metall2",
+              "HyperIndex/supported-networks/meter-mainnet",
+              "HyperIndex/supported-networks/meter-testnet",
+              "HyperIndex/supported-networks/mev-commit",
+              "HyperIndex/supported-networks/mint-mainnet",
+              "HyperIndex/supported-networks/mode",
+              "HyperIndex/supported-networks/monad-testnet",
+              "HyperIndex/supported-networks/moonbase-alpha",
+              "HyperIndex/supported-networks/moonbeam",
+              "HyperIndex/supported-networks/morph",
+              "HyperIndex/supported-networks/nautilus",
+              "HyperIndex/supported-networks/neo-x-testnet",
+              "HyperIndex/supported-networks/nibiru-testnet",
+              "HyperIndex/supported-networks/now-chaint",
+              "HyperIndex/supported-networks/oasis-emerald",
+              "HyperIndex/supported-networks/oasis-sapphire",
+              "HyperIndex/supported-networks/onigiri-subnet",
+              "HyperIndex/supported-networks/onigiri-test-subnet",
+              "HyperIndex/supported-networks/ontology-mainnet",
+              "HyperIndex/supported-networks/ontology-testnet",
+              "HyperIndex/supported-networks/op-celestia-raspberry",
+              "HyperIndex/supported-networks/opbnb",
+              "HyperIndex/supported-networks/optimism",
+              "HyperIndex/supported-networks/optimism-sepolia",
+              "HyperIndex/supported-networks/optopia",
+              "HyperIndex/supported-networks/peaq",
+              "HyperIndex/supported-networks/plasma",
+              "HyperIndex/supported-networks/plume",
+              "HyperIndex/supported-networks/polygon",
+              "HyperIndex/supported-networks/polygon-amoy",
+              "HyperIndex/supported-networks/polygon-zkevm",
+              "HyperIndex/supported-networks/polygon-zkevm-cardona-testnet",
+              "HyperIndex/supported-networks/public-goods-network",
+              "HyperIndex/supported-networks/pulsechain",
+              "HyperIndex/supported-networks/puppynet-shibarium",
+              "HyperIndex/supported-networks/ronin",
+              "HyperIndex/supported-networks/rootstock",
+              "HyperIndex/supported-networks/saakuru",
+              "HyperIndex/supported-networks/satoshivm",
+              "HyperIndex/supported-networks/scroll",
+              "HyperIndex/supported-networks/scroll-sepolia",
+              "HyperIndex/supported-networks/sentient-testnet",
+              "HyperIndex/supported-networks/sepolia",
+              "HyperIndex/supported-networks/shibarium",
+              "HyperIndex/supported-networks/shimmer-evm",
+              "HyperIndex/supported-networks/skale-europa",
+              "HyperIndex/supported-networks/soneium",
+              "HyperIndex/supported-networks/sonic",
+              "HyperIndex/supported-networks/sophon",
+              "HyperIndex/supported-networks/sophon-testnet",
+              "HyperIndex/supported-networks/stratovm-testnet",
+              "HyperIndex/supported-networks/superseed",
+              "HyperIndex/supported-networks/superseed-sepolia-testnet",
+              "HyperIndex/supported-networks/swell",
+              "HyperIndex/supported-networks/taiko",
+              "HyperIndex/supported-networks/tangle",
+              "HyperIndex/supported-networks/tanssi-demo",
+              "HyperIndex/supported-networks/taraxa",
+              "HyperIndex/supported-networks/telos-evm-mainnet",
+              "HyperIndex/supported-networks/telos-evm-testnet",
+              "HyperIndex/supported-networks/torus-mainnet",
+              "HyperIndex/supported-networks/torus-testnet",
+              "HyperIndex/supported-networks/unichain",
+              "HyperIndex/supported-networks/unicorn-ultra-nebulas-testnet",
+              "HyperIndex/supported-networks/velas-mainnet",
+              "HyperIndex/supported-networks/viction",
+              "HyperIndex/supported-networks/worldchain",
+              "HyperIndex/supported-networks/x-layer-mainnet",
+              "HyperIndex/supported-networks/x-layer-testnet",
+              "HyperIndex/supported-networks/xdc",
+              "HyperIndex/supported-networks/xdc-testnet",
+              "HyperIndex/supported-networks/zeta",
+              "HyperIndex/supported-networks/zeta-testnet",
+              "HyperIndex/supported-networks/zircuit",
+              "HyperIndex/supported-networks/zklink-nova-mainnet",
+              "HyperIndex/supported-networks/zksync",
+              "HyperIndex/supported-networks/zksync-sepolia-testnet",
+              "HyperIndex/supported-networks/zora",
+              "HyperIndex/supported-networks/zora-sepolia"
+            ]
+          },
+          {
+            "group": "Other",
+            "expanded": true,
+            "pages": [
+              "HyperIndex/Other/fuel",
+              "HyperIndex/Other/licensing",
+              "HyperIndex/Other/terms-of-service",
+              "HyperIndex/Other/privacy-policy"
             ]
           }
         ]
@@ -122,6 +329,7 @@
         "groups": [
           {
             "group": "Getting Started",
+            "expanded": true,
             "pages": [
               "HyperSync/overview",
               "HyperSync/quickstart",
@@ -130,6 +338,7 @@
           },
           {
             "group": "Core Features",
+            "expanded": true,
             "pages": [
               "HyperSync/hypersync-clients",
               "HyperSync/hypersync-query",
@@ -139,13 +348,22 @@
             ]
           },
           {
+            "group": "Supported Networks",
+            "expanded": false,
+            "pages": [
+              "HyperSync/hypersync-supported-networks"
+            ]
+          },
+          {
             "group": "Tutorials",
+            "expanded": true,
             "pages": [
               "HyperSync/Tutorials/tutorial-address-transactions"
             ]
           },
           {
             "group": "HyperFuel",
+            "expanded": true,
             "pages": [
               "HyperSync/HyperFuel/hyperfuel",
               "HyperSync/HyperFuel/hyperfuel-query"
@@ -158,6 +376,7 @@
         "groups": [
           {
             "group": "Getting Started",
+            "expanded": true,
             "pages": [
               "HyperRPC/overview",
               "HyperRPC/hyperrpc-supported-networks"
@@ -170,6 +389,7 @@
         "groups": [
           {
             "group": "Projects",
+            "expanded": true,
             "pages": [
               "showcase"
             ]
@@ -181,6 +401,7 @@
         "groups": [
           {
             "group": "Articles",
+            "expanded": true,
             "pages": [
               "blog/2023-08-08-methods-to-query-blockchain-data",
               "blog/2023-08-17-what-is-an-indexer",
@@ -258,15 +479,15 @@
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {

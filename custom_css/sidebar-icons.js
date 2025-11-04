@@ -19,7 +19,10 @@
       'Troubleshoot': '⚠',
       'Supported Networks': '◉',
       'Other': '···',
+      'Getting Started': '›',
       'Getting started': '›',
+      'Core Features': '■',
+      'HyperFuel': '▸',
       'Projects': '□',
       'Articles': '≡'
     };
@@ -52,11 +55,117 @@
   // Re-run when navigation changes (for SPAs)
   const observer = new MutationObserver(() => {
     addSidebarIcons();
+    setupCollapsibleGroups();
   });
 
   observer.observe(document.body, {
     childList: true,
     subtree: true
   });
+
+  // Setup collapsible groups functionality
+  function setupCollapsibleGroups() {
+    const groupHeaders = document.querySelectorAll('.sidebar-group-header');
+    
+    groupHeaders.forEach(header => {
+      // Skip if already set up
+      if (header.dataset.collapsibleSetup === 'true') {
+        return;
+      }
+      
+      const title = header.querySelector('h5#sidebar-title');
+      if (!title) return;
+      
+      // Get group name - get text from non-span nodes (excluding icon)
+      let groupName = '';
+      const textNodes = Array.from(title.childNodes).filter(node => {
+        if (node.nodeType === Node.TEXT_NODE) return true;
+        if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'SPAN') return true;
+        return false;
+      });
+      
+      if (textNodes.length > 0) {
+        groupName = textNodes.map(n => n.textContent).join('').trim();
+      } else {
+        // Fallback: use textContent and remove icon characters
+        groupName = title.textContent.trim();
+        groupName = groupName.replace(/^[›≡◦↑⌘⚙⚠◉···□]\s*/, '').trim();
+      }
+      
+      // Ensure we have a clean group name
+      groupName = groupName.replace(/^[›≡◦↑⌘⚙⚠◉···□]\s*/, '').trim();
+      
+      const isSupportedNetworks = groupName === 'Supported Networks';
+      
+      // Find the parent group container - use closest to find the container with mt-6 or lg:mt-8 classes
+      let groupContainer = header.closest('[class*="mt-6"]');
+      if (!groupContainer) {
+        groupContainer = header.closest('[class*="lg:mt-8"]');
+      }
+      if (!groupContainer) {
+        // Fallback: find parent that contains ul or #sidebar-group
+        groupContainer = header.parentElement;
+        let depth = 0;
+        while (groupContainer && groupContainer !== document.body && depth < 5) {
+          if (groupContainer.querySelector('ul, #sidebar-group')) {
+            break;
+          }
+          groupContainer = groupContainer.parentElement;
+          depth++;
+        }
+      }
+      
+      // Final fallback
+      if (!groupContainer || groupContainer === document.body) {
+        groupContainer = header.parentElement;
+      }
+      
+      // Set initial state: collapsed for Supported Networks, expanded for others
+      if (isSupportedNetworks) {
+        groupContainer.classList.add('collapsed');
+        header.classList.add('collapsed');
+      } else {
+        // Ensure it starts expanded
+        groupContainer.classList.remove('collapsed');
+        header.classList.remove('collapsed');
+      }
+      
+      // Add click handler
+      header.addEventListener('click', function(e) {
+        // Don't toggle if clicking on a link
+        if (e.target.closest('a')) {
+          return;
+        }
+        
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Toggle collapsed state
+        const isCollapsed = groupContainer.classList.contains('collapsed');
+        
+        if (isCollapsed) {
+          groupContainer.classList.remove('collapsed');
+          header.classList.remove('collapsed');
+        } else {
+          groupContainer.classList.add('collapsed');
+          header.classList.add('collapsed');
+        }
+      });
+      
+      header.dataset.collapsibleSetup = 'true';
+    });
+  }
+
+  // Initial setup - run after icons are added
+  setTimeout(() => {
+    setupCollapsibleGroups();
+  }, 100);
+  
+  // Also run when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupCollapsibleGroups);
+  } else {
+    setupCollapsibleGroups();
+  }
 })();
 

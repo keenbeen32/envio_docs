@@ -4,7 +4,7 @@
    Note: Using actual Mintlify class names from HTML
    ======================================== */
 
-/* Import Inter font (matching Bun docs) */
+/* Import Inter font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* ==================
@@ -14,12 +14,12 @@
 /* Sidebar links - matching Bun docs style */
 #sidebar-group li a {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif !important;
-  font-size: 13px !important;        /* Reduced from 14px */
+  font-size: 13px !important;        
   font-weight: 500 !important;
-  line-height: 18px !important;      /* Adjusted to match smaller font */
-  color: #1f2937 !important;         /* Darker - gray-800 instead of gray-700 */
+  line-height: 18px !important;   
+  color: #1f2937 !important;       
   padding: 6px 12px !important;
-  padding-left: 1.5rem !important;   /* Add left indentation */
+  padding-left: 1.5rem !important;   
   border-radius: 6px !important;
   display: block !important;
   transition: all 0.15s ease-in-out !important;
@@ -113,5 +113,48 @@
 /* Dark mode for group headings */
 .dark .sidebar-group-header h5#sidebar-title {
   color: #9ca3af !important;         /* Lighter gray for dark mode */
+}
+
+/* ==================
+   COLLAPSIBLE GROUPS
+   ================== */
+
+/* Make group headers clickable */
+.sidebar-group-header {
+  cursor: pointer !important;
+  user-select: none !important;
+}
+
+/* Collapsed state - hide group content */
+[class*="mt-6"].collapsed ul,
+[class*="lg:mt-8"].collapsed ul,
+[class*="mt-6"].collapsed #sidebar-group,
+[class*="lg:mt-8"].collapsed #sidebar-group,
+[class*="mt-6"].collapsed [class*="space-y"],
+[class*="lg:mt-8"].collapsed [class*="space-y"] {
+  display: none !important;
+}
+
+/* Expanded state - show group content (default state) */
+[class*="mt-6"]:not(.collapsed) ul,
+[class*="lg:mt-8"]:not(.collapsed) ul,
+[class*="mt-6"]:not(.collapsed) #sidebar-group,
+[class*="lg:mt-8"]:not(.collapsed) #sidebar-group,
+[class*="mt-6"]:not(.collapsed) [class*="space-y"],
+[class*="lg:mt-8"]:not(.collapsed) [class*="space-y"] {
+  display: block !important;
+}
+
+/* Ensure collapse/expand buttons are visible and clickable */
+.sidebar-group-header button,
+.sidebar-group-header [role="button"],
+.sidebar-group-header svg,
+.sidebar-group-header [class*="chevron"],
+.sidebar-group-header [class*="arrow"] {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
 }
 
