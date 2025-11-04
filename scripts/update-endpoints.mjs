@@ -288,9 +288,9 @@ Envio supports ${network.name} through an RPC-based indexing approach. This meth
 
 To use ${network.name}, define the RPC configuration in your network configuration file as follows:
 
-<Info>
+<Callout icon="info-circle" color="#3B82F6" iconType="regular">
 You may need to adjust more parameters of the [RPC configuration](/HyperIndex/Advanced/rpc-sync) to support the specific RPC provider.
-</Info>
+</Callout>
 
 \`\`\`yaml icon="/icons/yaml-icon.png" title="config.yaml"
 name: IndexerName # Specify indexer name
@@ -407,12 +407,50 @@ const generateMarkdownFiles = async () => {
   }
 };
 
+// Function to ensure all groups have expanded property in correct order
+const ensureAllGroupsExpanded = (tabs) => {
+  tabs.forEach(tab => {
+    if (tab.groups && Array.isArray(tab.groups)) {
+      tab.groups.forEach((group, index) => {
+        // Remove old collapse property if it exists
+        if (group.collapse !== undefined) {
+          delete group.collapse;
+        }
+        
+        // Set expanded property: false for Supported Networks, true for others
+        const expandedValue = group.group === "Supported Networks" ? false : true;
+        
+        // Reorder properties: group, expanded, pages
+        if (group.group && group.pages) {
+          const { group: groupName, pages, ...rest } = group;
+          const reorderedGroup = {
+            group: groupName,
+            expanded: expandedValue,
+            pages: pages,
+            ...rest
+          };
+          // Replace the group in the array
+          tab.groups[index] = reorderedGroup;
+        } else if (group.group) {
+          // If expanded doesn't exist, add it
+          if (group.expanded === undefined) {
+            group.expanded = expandedValue;
+          }
+        }
+      });
+    }
+  });
+};
+
 // Function to update docs.json with the network entries
 const updateDocsJson = (networkPages) => {
   try {
     const docsJsonPath = path.join(__dirname, "../docs.json");
     const docsJsonContent = fs.readFileSync(docsJsonPath, "utf8");
     const docsJson = JSON.parse(docsJsonContent);
+
+    // Ensure all groups have expanded property set correctly
+    ensureAllGroupsExpanded(docsJson.navigation.tabs);
 
     // Find the HyperIndex tab
     const hyperIndexTab = docsJson.navigation.tabs.find(tab => tab.tab === "HyperIndex");
@@ -431,12 +469,19 @@ const updateDocsJson = (networkPages) => {
       
       supportedNetworksGroup = {
         group: "Supported Networks",
+        expanded: false,
         pages: networkPages
       };
       hyperIndexTab.groups.splice(insertIndex, 0, supportedNetworksGroup);
     } else {
       // Update existing group
       supportedNetworksGroup.pages = networkPages;
+      // Ensure expanded property is set to false for Supported Networks
+      supportedNetworksGroup.expanded = false;
+      // Remove old collapse property if it exists
+      if (supportedNetworksGroup.collapse !== undefined) {
+        delete supportedNetworksGroup.collapse;
+      }
     }
 
     // Ensure HyperSync supported networks page exists
@@ -451,6 +496,7 @@ const updateDocsJson = (networkPages) => {
         
         hyperSyncSupportedNetworksGroup = {
           group: "Supported Networks",
+          expanded: false,
           pages: ["HyperSync/hypersync-supported-networks"]
         };
         hyperSyncTab.groups.splice(insertIndex, 0, hyperSyncSupportedNetworksGroup);
@@ -458,6 +504,12 @@ const updateDocsJson = (networkPages) => {
         // Update if it exists
         if (!hyperSyncSupportedNetworksGroup.pages.includes("HyperSync/hypersync-supported-networks")) {
           hyperSyncSupportedNetworksGroup.pages = ["HyperSync/hypersync-supported-networks"];
+        }
+        // Ensure expanded property is set to false for Supported Networks
+        hyperSyncSupportedNetworksGroup.expanded = false;
+        // Remove old collapse property if it exists
+        if (hyperSyncSupportedNetworksGroup.collapse !== undefined) {
+          delete hyperSyncSupportedNetworksGroup.collapse;
         }
       }
     }

@@ -27,3 +27,60 @@
   color: inherit !important;
 }
 
+/* ==================
+   INFO BOXES
+   ================== */
+
+/* Ensure Info components are blue - target Mintlify's actual structure */
+[data-mint-component="Info"],
+div[data-mint-component="Info"],
+div[class*="alert"]:has(svg[data-icon="info"]),
+div[class*="alert-info"],
+div[class*="Info"]:not([class*="Warning"]):not([class*="Note"]):not([class*="Error"]):not([class*="Tip"]),
+.mint-alert-info,
+.mint-Info {
+  background-color: #EFF6FF !important;
+  border-left: 4px solid #3B82F6 !important;
+  border-color: #3B82F6 !important;
+  color: #1E40AF !important;
+}
+
+/* Info box text and links */
+[data-mint-component="Info"] *,
+div[data-mint-component="Info"] *,
+div[class*="alert"]:has(svg[data-icon="info"]) *,
+div[class*="alert-info"] * {
+  color: #1E40AF !important;
+}
+
+[data-mint-component="Info"] a,
+div[data-mint-component="Info"] a {
+  color: #1D4ED8 !important;
+  text-decoration: underline !important;
+}
+
+/* Dark mode Info boxes */
+.dark [data-mint-component="Info"],
+.dark div[data-mint-component="Info"],
+.dark div[class*="alert"]:has(svg[data-icon="info"]),
+.dark div[class*="alert-info"],
+.dark .mint-alert-info,
+.dark .mint-Info {
+  background-color: #1E3A8A !important;
+  border-left-color: #60A5FA !important;
+  border-color: #60A5FA !important;
+  color: #DBEAFE !important;
+}
+
+.dark [data-mint-component="Info"] *,
+.dark div[data-mint-component="Info"] *,
+.dark div[class*="alert"]:has(svg[data-icon="info"]) *,
+.dark div[class*="alert-info"] * {
+  color: #DBEAFE !important;
+}
+
+.dark [data-mint-component="Info"] a,
+.dark div[data-mint-component="Info"] a {
+  color: #93C5FD !important;
+}
+
