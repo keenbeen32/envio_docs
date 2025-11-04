@@ -35,8 +35,6 @@ When implementing handlers for your indexer, use the logging functions provided 
 
 ### Examples by Language
 
-<CodeGroup>
-
 ```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
 // Inside your handler
 context.log.debug(
@@ -59,55 +57,6 @@ context.log.info("Processing blockchain event", {
   data: { blockHash: event.blockHash },
 });
 ```
-
-```javascript icon="/icons/javascript-icon.png" title="EventHandlers.js"
-// Inside your handler
-context.log.debug(
-  `Processing event with block hash: ${event.blockHash} (debug)`
-);
-context.log.info(`Processing event with block hash: ${event.blockHash} (info)`);
-context.log.warn(`Potential issue with event: ${event.blockHash} (warn)`);
-context.log.error(`Failed to process event: ${event.blockHash} (error)`);
-
-// With exception:
-context.log.error(
-  `Failed to process event: ${event.blockHash}`,
-  new Error("Error processing event")
-);
-
-// You can also provide an object as the second argument for structured logging:
-context.log.info("Processing blockchain event", {
-  type: "info",
-  extra: "Additional debugging context",
-  data: { blockHash: event.blockHash },
-});
-```
-
-```rescript icon="/icons/rescript-icon.png" title="EventHandlers.res"
-// Inside your handler
-exception ExampleException(string) // Example of an exception
-
-// Basic string logging
-context.log.debug(`Processing event with block hash: ${event.blockHash} (debug)`)
-context.log.info(`Processing event with block hash: ${event.blockHash} (info)`)
-context.log.warn(`Potential issue with event: ${event.blockHash} (warn)`)
-context.log.error(`Failed to process event: ${event.blockHash} (error)`)
-
-// With exception:
-context.log.errorWithExn(
-  `Failed to process event: ${event.blockHash}`,
-  ExampleException("Error processing event")
-)
-
-// You can also provide an object as the second argument for structured logging:
-context.log.info("Processing blockchain event", ~params={
-  "type": "info",
-  "extra": "Additional debugging context",
-  "data": { "blockHash": event.blockHash },
-});
-```
-
-</CodeGroup>
 
 ## Metrics, Debugging, and Troubleshooting
 
