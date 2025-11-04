@@ -39,7 +39,7 @@ HyperIndex provides several ways to define indices in your GraphQL schema, givin
 
 The simplest form of indexing is on individual fields using the `@index` directive:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Transaction {
   id: ID!
   userAddress: String! @index
@@ -61,7 +61,7 @@ All become significantly faster because the database can use the indices to quic
 
 When you frequently query using multiple fields together, composite indices provide better performance:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Transfer @index(fields: ["from", "to", "tokenId"]) {
   id: ID!
   from: String! @index
@@ -138,7 +138,7 @@ Indices increase database storage requirements:
 
 Consider a token transfer entity:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type TokenTransfer {
   id: ID!
   token: Token! @index
@@ -162,7 +162,7 @@ With this schema, the following queries will be optimized:
 
 For an NFT marketplace with listings and sales:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type NFTListing
   @index(fields: ["collection", "status", "price"])
   @index(fields: ["seller", "status"]) {
@@ -190,7 +190,7 @@ Beyond schema design, how you write your GraphQL queries affects performance:
 
 Request only the fields you actually need:
 
-```graphql icon="/icons/graphql-icon.png"
+```graphql icon="/static/icons/graphql-icon.png"
 # Good
 query {
   tokenTransfers(where: { token: { _eq: "0x123" } }, limit: 10) {
@@ -218,7 +218,7 @@ query {
 
 Always paginate large result sets:
 
-```graphql icon="/icons/graphql-icon.png"
+```graphql icon="/static/icons/graphql-icon.png"
 query {
   tokenTransfers(
     where: { token: { _eq: "0x123" } }
@@ -235,7 +235,7 @@ query {
 
 When building applications that poll for updates, use timestamps to fetch only new data:
 
-```graphql icon="/icons/graphql-icon.png"
+```graphql icon="/static/icons/graphql-icon.png"
 query getUpdatedTransfers($lastFetched: BigInt!) {
   tokenTransfers(where: { timestamp: { _gt: $lastFetched } }) {
     id

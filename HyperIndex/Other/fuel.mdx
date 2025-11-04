@@ -76,7 +76,7 @@ Unlike Solidity's `emit` which requires predefined event structures, Sway's `log
 
 #### Configuration Example:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 ecosystem: fuel
 network:
   name: "fuel_testnet"
@@ -97,7 +97,7 @@ The `logId` is a unique identifier for the logged struct, which you can find in 
 
 If your event name matches the logged struct name in Sway, you can omit the `logId`:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 events:
   - name: NewGreeting # Will automatically detect logId if it matches the struct name
 ```
@@ -127,7 +127,7 @@ Fuel allows indexing several additional receipt types not available in EVM:
 
 You can rename these events while maintaining their type:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 events:
   - name: MintMyNft # Custom name
     type: mint # Actual event type
@@ -152,7 +152,7 @@ Transfers between wallets are not included in the `Transfer` event type.
 
 When handling Fuel events, the event object structure differs from EVM:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 // Example Fuel event handler
 SwayContract.NewGreeting.handler(async ({ event, context }) => {
   // Access event parameters
@@ -199,7 +199,7 @@ pnpm i -g envio@latest
 
 Add the `ecosystem: fuel` field to your `config.yaml`:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 ecosystem: fuel # Required for Fuel indexers
 network:
   name: "fuel_testnet"

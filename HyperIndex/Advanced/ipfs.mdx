@@ -37,7 +37,7 @@ When prompted, enter the Bored Ape Yacht Club contract address: `0xBC4CA0EdA7647
 
 Modify the configuration to focus on the Transfer events:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: bored-ape-yacht-club-nft-indexer
 preload_handlers: true
 networks:
@@ -57,7 +57,7 @@ networks:
 
 Create a schema to store NFT ownership data:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Nft {
   id: ID! # tokenId
   owner: String!
@@ -68,7 +68,7 @@ type Nft {
 
 Track ownership changes by handling Transfer events:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandler.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandler.ts"
 import { BoredApeYachtClub } from "generated";
 
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
@@ -93,7 +93,7 @@ BoredApeYachtClub.Transfer.handler(async ({ event, context }) => {
 
 Run your indexer with `pnpm dev` and visit http://localhost:8080 to see the ownership data:
 
-![Basic NFT ownership data](/images/docs-assets/ipfs-screenshot.jpg)
+![Basic NFT ownership data](/static/images/docs-assets/ipfs-screenshot.jpg)
 
 ## Step 2: Fetching IPFS Metadata
 
@@ -103,7 +103,7 @@ Now, let's enhance our indexer to fetch metadata from IPFS:
 
 Extend the schema to include metadata fields:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Nft {
   id: ID! # tokenId
   owner: String!
@@ -122,7 +122,7 @@ Learn how Preload Optimization works in a [dedicated guide](/HyperIndex/Advanced
 
 Let's create the `getIpfsMetadata` effect in the `src/utils/ipfs.ts` file:
 
-```typescript icon="/icons/typescript-icon.png" title="utils/ipfs.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="utils/ipfs.ts"
 import { experimental_createEffect, S, type EffectContext } from "envio";
 
 // Define the schema for the IPFS metadata
@@ -201,7 +201,7 @@ export const getIpfsMetadata = experimental_createEffect(
 
 Let's modify the event handler to fetch and store metadata using the `getIpfsMetadata` effect:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { BoredApeYachtClub } from "generated";
 import { getIpfsMetadata } from "./utils/ipfs";
 
@@ -233,7 +233,7 @@ BoredApeYachtClub.Transfer.handler(async ({ event, context }) => {
 
 When you run the indexer now, it will populate both ownership data and token metadata:
 
-![NFT ownership and metadata](/images/docs-assets/ipfs-screenshot-2.jpg)
+![NFT ownership and metadata](/static/images/docs-assets/ipfs-screenshot-2.jpg)
 
 ## Best Practices for IPFS Integration
 
@@ -243,7 +243,7 @@ When working with IPFS in your indexers, consider these best practices:
 
 IPFS gateways can be unreliable, so always implement multiple fallback options:
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 const endpoints = [
   ...(process.env.PAID_IPFS_GATEWAY ? [process.env.PAID_IPFS_GATEWAY] : []),
   "https://cloudflare-ipfs.com/ipfs",
@@ -256,7 +256,7 @@ const endpoints = [
 
 Always include error handling and provide fallback values:
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 try {
   // IPFS fetch logic
 } catch (error) {
@@ -269,7 +269,7 @@ try {
 
 Follow the [Effect API Persistence](/HyperIndex/Advanced/effect-api#persistence) guide to implement caching for local development. This should allow you to avoid repeatedly fetching the same data.
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 export const getIpfsMetadata = experimental_createEffect(
   {
     name: "getIpfsMetadata",

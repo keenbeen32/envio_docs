@@ -25,7 +25,7 @@ HyperIndex includes built-in support for handling chain reorganizations, ensurin
 
 You can control reorg handling through the `rollback_on_reorg` flag in your `config.yaml` file:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 # Enable reorg handling (default)
 rollback_on_reorg: true
 networks:
@@ -43,7 +43,7 @@ networks:
 
 You can customize the number of blocks required before considering a block "confirmed" and no longer subject to reorgs:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 rollback_on_reorg: true
 networks:
   - id: 137 # Polygon
@@ -98,7 +98,7 @@ During a reorg-triggered rollback:
 
 Here's a complete example showing reorg handling configuration for multiple networks:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 rollback_on_reorg: true
 networks:
   - id: 1 # Ethereum Mainnet

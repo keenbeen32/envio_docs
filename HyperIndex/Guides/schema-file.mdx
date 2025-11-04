@@ -13,7 +13,7 @@ Entities in your schema are defined as GraphQL object types:
 
 **Example:**
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type User {
   id: ID!
   greetings: [String!]!
@@ -149,7 +149,7 @@ value.toPrecision(5); // "123.46"
 
 When you've defined a `BigDecimal` field in your schema:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type TokenPair {
   id: ID!
   name: String!
@@ -160,7 +160,7 @@ type TokenPair {
 
 You can use it in your handlers:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 // In your event handler
 context.TokenPair.set({
   id: event.params.pairId,
@@ -250,7 +250,7 @@ Enums allow fields to accept only a predefined set of values.
 
 **Example:**
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 enum AccountType {
   ADMIN
   USER
@@ -267,7 +267,7 @@ Enums translate to string unions (TypeScript/JavaScript) or polymorphic variants
 
 **TypeScript Example:**
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { AccountType } from "../generated/src/Enums.gen";
 
 let user = {
@@ -285,7 +285,7 @@ Define relationships between entities using the `@derivedFrom` directive, known 
 
 **Example:**
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type NftCollection {
   id: ID!
   contractAddress: Bytes!
@@ -313,7 +313,7 @@ type Token {
 
 Add an index to a field for optimized queries and loader performance:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Token {
   id: ID!
   tokenId: BigInt!
@@ -334,19 +334,19 @@ Customize the precision and scale for `BigInt` and `BigDecimal` fields using `@c
 
 - `BigInt` (precision only):
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 amount: BigInt @config(precision: 76)
 ```
 
 - `BigDecimal` (precision and scale):
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 price: BigDecimal @config(precision: 10, scale: 2)
 ```
 
 **Example:**
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Payment {
   id: ID!
   amount: BigInt @config(precision: 76)
@@ -359,7 +359,7 @@ This controls PostgreSQL storage allocation and numerical accuracy.
 <details>
   <summary>Detailed Example with Arrays</summary>
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type AdvancedEntity {
   exampleBigInt: BigInt @config(precision: 76)
   exampleBigIntRequired: BigInt! @config(precision: 77)

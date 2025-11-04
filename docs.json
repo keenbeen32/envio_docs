@@ -7,7 +7,7 @@
     "light": "#07C983",
     "dark": "#15803D"
   },
-  "favicon": "/logo/envio-logo.png",
+  "favicon": "/static/envio-logos/envio-logo.png",
   "styles": [
     "custom_css/navbar.css",
     "custom_css/sidebar.css",
@@ -391,7 +391,7 @@
             "group": "Projects",
             "expanded": true,
             "pages": [
-              "showcase"
+              "Showcase/showcase"
             ]
           }
         ]
@@ -474,8 +474,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/envio-logo.png",
-    "dark": "/logo/envio-logo.png"
+    "light": "/static/envio-logos/envio-logo.png",
+    "dark": "/static/envio-logos/envio-logo.png"
   },
   "contextual": {
     "options": [

@@ -17,7 +17,7 @@ The preloaded data would then be available to event handlers through a `loaderRe
 
 Compared to the current [Preload Optimization](/HyperIndex/Advanced/preload-optimization) approach, handlers with loaders didn't have the Preload Phase, and always ran once.
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 ContractName.EventName.handlerWithLoader({
   // The loader function runs before event processing starts
   loader: async ({ event, context }) => {
@@ -39,7 +39,7 @@ Find more information about how Loaders work by reading the [Preload Optimizatio
 
 For example, this is how a loader can be turned into a handler with Preload Optimization enabled:
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 // Before:
 ERC20.Transfer.handlerWithLoader({
   loader: async ({ event, context }) => {

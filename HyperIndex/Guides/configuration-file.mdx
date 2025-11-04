@@ -19,7 +19,7 @@ This command generates necessary types and code for your event handlers.
 
 Here's an example `config.yaml` file:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 # yaml-language: $schema=./node_modules/envio/evm.schema.json
 name: Greeter
 description: Greeter Indexer Example
@@ -52,13 +52,13 @@ Addresses can be provided in **checksum** format or in **lowercase**. Envio acce
 
 **Single address:**
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 address: 0xContractAddress
 ```
 
 **Multiple addresses for the same contract:**
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 contracts:
     - name: MyContract
       address:
@@ -73,7 +73,7 @@ If using a **proxy contract**, always use the **proxy address**, not the impleme
 **Global definitions:**  
 You can also avoid repeating addresses by using global contract definitions:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 contracts:
     - name: Greeter
       abi: greeter.json
@@ -98,7 +98,7 @@ By default, contracts use the network `start_block`. Starting from `envio@2.27`,
 
 **Example with optional per-contract start_block override:**
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
     - id: 1 # ethereum-mainnet
       start_block: 18000000 # Default start block for all contracts on this network
@@ -119,7 +119,7 @@ networks:
 
 Define specific events to index in a human-readable format:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 events:
     - event: "NewGreeting(address user, string greeting)"
     - event: "ClearGreeting(address user)"
@@ -131,7 +131,7 @@ By default, all events defined in the contract are indexed, but you can selectiv
 
 You can assign custom names to events in `config.yaml`. This is handy when two events share the same name but have different signatures, or when you want a more descriptive name in your Envio project.
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 events:
     - event: Assigned(address indexed recipientId, uint256 amount, address token)
     - event: Assigned(address indexed recipientId, uint256 amount, address token, address sender)
@@ -146,7 +146,7 @@ By default, HyperIndex doesn't store raw event data in the database to optimize 
 
 To enable storage of raw events, add the following to your `config.yaml`:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 raw_events: true
 ```
 
@@ -166,7 +166,7 @@ To improve indexing performance and reduce credits usage, the `block` and `trans
 
 To access fields that are not provided by default, specify them using the `field_selection` option for your event:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 events:
     - event: "Assigned(address indexed user, uint256 amount)"
       field_selection:
@@ -182,7 +182,7 @@ See all possible options in the [Config File Reference](/HyperIndex/Advanced/con
 
 You can also specify fields globally for all events in the root of the config file:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 field_selection:
     transaction_fields:
         - hash
@@ -205,7 +205,7 @@ To improve indexing performance when indexing multiple blockchains, you can enab
 
 Activate this by adding to your `config.yaml`:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 unordered_multichain_mode: true
 ```
 
@@ -217,7 +217,7 @@ Learn more about when and how to use this feature [here](/HyperIndex/Advanced/mu
 
 HyperIndex automatically handles blockchain reorganizations by default. To disable or customize this behavior, set the `rollback_on_reorg` flag in your `config.yaml`:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 rollback_on_reorg: true # default is true
 ```
 
@@ -231,7 +231,7 @@ Enable [Preload Optimization](/HyperIndex/Advanced/preload-optimization) for you
 
 This will make most indexers processing much faster without any additional code changes.
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 preload_handlers: true # default is false
 ```
 
@@ -247,7 +247,7 @@ Be aware of:
 
 Since `envio@2.9.0`, environment variable interpolation is supported for flexibility and security:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
     - id: ${ENVIO_CHAIN_ID:-ethereum-mainnet}
       contracts:
@@ -274,7 +274,7 @@ For more detailed information about environment variables, see our [Environment 
 
 You can customize the path to the [schema file](/HyperIndex/Guides/schema-file) using the `schema` option:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 schema: ./path/to/schema.graphql
 ```
 
@@ -286,7 +286,7 @@ By default, the `schema.graphql` is expected to be in the root directory of your
 
 You can customize the path where the generated directory will be placed using the `output` option:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 output: ./custom/generated/path
 ```
 
@@ -302,7 +302,7 @@ By default, the generated directory is placed in `generated` relative to the cur
 
 This example indexes events from multiple contracts across multiple networks.
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: envio-indexer
 unordered_multichain_mode: true
 preload_handlers: true

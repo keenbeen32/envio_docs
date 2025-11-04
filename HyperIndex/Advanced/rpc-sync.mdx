@@ -23,7 +23,7 @@ For networks that HyperSync supports, we strongly recommend using HyperSync rath
 
 To use RPC as your data source, you need to add an `rpc_config` section to your network configuration in the `config.yaml` file:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1 # Ethereum Mainnet
     rpc_config:
@@ -41,7 +41,7 @@ The presence of the `rpc_config` section tells HyperIndex to use RPC instead of 
 
 For more control over how your indexer interacts with the RPC endpoint, you can configure additional parameters:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     rpc_config:
@@ -115,7 +115,7 @@ For more robust RPC usage, you can implement [eRPC](https://github.com/erpc/erpc
 <Step title="Create your eRPC configuration file">
 Create `erpc.yaml`:
 
-```yaml icon="/icons/yaml-icon.png" title="erpc.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="erpc.yaml"
 logLevel: debug
 projects:
   - id: main
@@ -157,7 +157,7 @@ services:
 <Step title="Configure HyperIndex to use eRPC">
 Update your `config.yaml`:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     rpc_config:

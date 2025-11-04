@@ -3,7 +3,7 @@ title: "Indexing & Reorgs"
 description: "Understanding chain reorganizations and their implications on blockchain indexing, including considerations for multichain environments and how to design for reorgs."
 ---
 
-<img src="/images/blog-assets/indexing-and-reorgs.png" alt="Envio Cover Photo" width="100%"/>
+<img src="/static/images/blog-assets/indexing-and-reorgs.png" alt="Envio Cover Photo" width="100%"/>
 
 # Indexing & Reorgs
 
@@ -62,29 +62,29 @@ In order to understand reorgs, let's break down the fundamental concepts of a re
 
 A container that stores transactions.
 
-<img src="/images/blog-assets/indexing-and-reorgs-1.png" alt="Indexing & Reorgs" width="100%"/>
+<img src="/static/images/blog-assets/indexing-and-reorgs-1.png" alt="Indexing & Reorgs" width="100%"/>
 
 ### Chain
 
 A series of sequential blocks.
 
-<img src="/images/blog-assets/indexing-and-reorgs-2.png" alt="Indexing & Reorgs" width="100%"/>
+<img src="/static/images/blog-assets/indexing-and-reorgs-2.png" alt="Indexing & Reorgs" width="100%"/>
 
 ### Miners
 
 Actors that try to submit the next valid block.
 
-<img src="/images/blog-assets/indexing-and-reorgs-3.png" alt="Indexing & Reorgs" width="100%"/>
+<img src="/static/images/blog-assets/indexing-and-reorgs-3.png" alt="Indexing & Reorgs" width="100%"/>
 
 ### Chain fork
 
-<img src="/images/blog-assets/indexing-and-reorgs-4.png" alt="Indexing & Reorgs" width="100%"/>
+<img src="/static/images/blog-assets/indexing-and-reorgs-4.png" alt="Indexing & Reorgs" width="100%"/>
 
 A chain fork occurs when more than one miner submits a valid block at the same time causing a split and two valid chains to exist.
 
 ### Orphaned Chain & Canonical chain
 
-<img src="/images/blog-assets/indexing-and-reorgs-5.png" alt="Indexing & Reorgs" width="100%"/>
+<img src="/static/images/blog-assets/indexing-and-reorgs-5.png" alt="Indexing & Reorgs" width="100%"/>
 
 When a chain forks, eventually one of the chains becomes accepted as the valid chain, known as the canonical chain, the forked chain that isn't accepted becomes the orphaned chain, the orphaned blocks don't continue existing and the transactions that occur in those blocks cease to exist.
 

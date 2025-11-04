@@ -85,7 +85,7 @@ Decentralized exchanges like Uniswap provide price data through swap events. We'
 
 First, we need to find the specific Uniswap V3 pool for USDB/WETH:
 
-```typescript icon="/icons/typescript-icon.png" title="findPool.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="findPool.ts"
 import { createPublicClient, http, parseAbi, getContract } from "viem";
 import { blast } from "viem/chains";
 
@@ -152,7 +152,7 @@ External price APIs like [CoinGecko](https://www.coingecko.com/en/api) provide c
 
 Here's a simple function to fetch historical ETH prices from CoinGecko:
 
-```typescript icon="/icons/typescript-icon.png" title="request.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="request.ts"
 const COIN_GECKO_API_KEY = process.env.COIN_GECKO_API_KEY;
 
 async function fetchEthPriceFromUnix(
@@ -228,7 +228,7 @@ pnpx envio init
 <Step title="Configure Your Indexer">
 Edit your `config.yaml` file to track both the API3 oracle and the Uniswap V3 pool:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 # yaml-language-server: $schema=./node_modules/envio/evm.schema.json
 name: envio-indexer
 preload_handlers: true
@@ -262,7 +262,7 @@ The `field_selection` section is needed to include transaction hashes in your in
 <Step title="Define Your Schema">
 Create a schema that captures price data from all three sources:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type OraclePoolPrice {
   id: ID!
   value: BigInt!
@@ -296,7 +296,7 @@ type EthDeposited {
 <Step title="Implement Event Handlers">
 Create event handlers to process data from all three sources:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import {
   Api3ServerV1,
   OraclePoolPrice,
@@ -396,7 +396,7 @@ This will begin indexing data from block 11,000,000 on Blast.
 <Step title="Analyze the Results">
 After running your indexer, you can query the data in Hasura to compare the three price data sources:
 
-```graphql icon="/icons/graphql-icon.png" title="Hasura API"
+```graphql icon="/static/icons/graphql-icon.png" title="Hasura API"
 query ComparePrices {
   EthDeposited(order_by: { block: desc }, limit: 10) {
     block

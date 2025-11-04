@@ -41,7 +41,7 @@ Let's look at a complete example using an NFT Factory pattern.
 
 ### 1. Configure Your Contracts in config.yaml
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: nftindexer
 description: NFT Factory
 networks:
@@ -72,7 +72,7 @@ Note that:
 
 In your `src/EventHandlers.ts` file:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 // Register SimpleNft contracts whenever they're created by the factory
 NftFactory.SimpleNftCreated.contractRegister(({ event, context }) => {
   // Register the new NFT contract using its address from the event
@@ -101,7 +101,7 @@ As of version `2.21`, you can use async contract registration.
 
 This is a unique feature of Envio that allows you to perform an external call to determine the address of the contract to register.
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 NftFactory.SimpleNftCreated.contractRegister(async ({ event, context }) => {
   const version = await getContractVersion(event.params.contractAddress);
   if (version === "v2") {

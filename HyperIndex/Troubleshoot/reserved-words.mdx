@@ -37,14 +37,14 @@ When you encounter these errors, you need to rename the offending identifiers:
 
 ### Example Problem
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 # In config.yaml
 contracts:
   - name: class # Error: 'class' is a reserved word in JavaScript
     abi_file_path: ./abis/MyContract.json
 ```
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 # In schema.graphql
 type interface { # Error: 'interface' is a reserved word in JavaScript and TypeScript
   id: ID!
@@ -54,14 +54,14 @@ type interface { # Error: 'interface' is a reserved word in JavaScript and TypeS
 
 ### Example Solution
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 # Fixed config.yaml
 contracts:
   - name: ClassContract # Good: Not a reserved word
     abi_file_path: ./abis/MyContract.json
 ```
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 # Fixed schema.graphql
 type UserInterface { # Good: Not a reserved word
   id: ID!

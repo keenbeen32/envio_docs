@@ -7,7 +7,7 @@ description: "Learn how to register and manage event handlers for efficient data
 
 A handler is a function that receives blockchain data, processes it, and inserts it into the database. You can register handlers in the file defined in the `handler` field in your `config.yaml` file. By default this is `src/EventHandlers.*` file.
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { <CONTRACT_NAME> } from "generated";
 
 <CONTRACT_NAME>.<EVENT_NAME>.handler(async ({ event, context }) => {
@@ -23,7 +23,7 @@ The `generated` module contains code and types based on `config.yaml` and `schem
 
 Here's a handler example for the `NewGreeting` event. It belongs to the `Greeter` contract from our beginners [Greeter Tutorial](/HyperIndex/Tutorials/greeter-tutorial):
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { Greeter, User } from "generated";
 
 // Handler for the NewGreeting event
@@ -234,7 +234,7 @@ Both `context.Entity.set` and `context.Entity.deleteUnsafe` methods use the In-M
 
 When your schema defines a field that links to another entity type, set the relationship using `<field>_id` with the referenced entity's `id`. You are storing the ID, not the full entity object.
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type A {
   id: ID!
   b: B!
@@ -270,7 +270,7 @@ The `deleteUnsafe` method is experimental and **unsafe**. You need to manually h
 
 Use the following approach to update specific fields in an existing entity:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 const pool = await context.Pool.get(poolId);
 if (pool) {
   context.Pool.set({

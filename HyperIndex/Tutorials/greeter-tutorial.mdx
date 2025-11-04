@@ -105,7 +105,7 @@ Let's examine the key files that were created:
 <Step title="config.yaml">
 This configuration file defines which networks and contracts to index:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 # Partial example
 envio_node:
   networks:
@@ -127,7 +127,7 @@ envio_node:
 <Step title="schema.graphql">
 This schema defines the data structures for the indexed events:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Greeting {
   id: ID!
   user: String!
@@ -214,7 +214,7 @@ Navigate to the **Data** tab to browse the database tables, or use the **API** t
 <Step title="Run a sample query">
 Try this query to see the latest greetings:
 
-```graphql icon="/icons/graphql-icon.png" title="Hasura API"
+```graphql icon="/static/icons/graphql-icon.png" title="Hasura API"
 query GetGreetings {
   Greeting(limit: 10, order_by: { blockTimestamp: desc }) {
     id

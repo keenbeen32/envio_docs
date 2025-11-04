@@ -3,7 +3,7 @@ title: "How Sablier uses Envio to Power its Next-Gen Multi-Chain Token Distribut
 description: "Learn how Sablier transitioned to Envio's multi-chain indexing stack to accelerate development cycles and simplify infrastructure management across 11+ blockchain networks."
 ---
 
-<img src="/images/blog-assets/case-study-sablier.png" alt="Cover Image for Case Study Sablier" width="100%"/>
+<img src="/static/images/blog-assets/case-study-sablier.png" alt="Cover Image for Case Study Sablier" width="100%"/>
 
 Managing operations across multiple blockchain networks shouldn't be a headache. This was the challenge for Sablier until they discovered Envio's powerful indexing capabilities. Sablier has recently transitioned to Envio's multi-chain indexing stack, HyperIndex, to accelerate its development cycles and significantly ease the complexity of infrastructure management across various blockchain networks. This integration has allowed Sablier to cut infrastructure costs and expedite the release of new features and product updates, improving their time to market (TTM).
 
@@ -41,14 +41,14 @@ One of the standout features of Envio's SDK that greatly benefited Sablier was i
 
 Envio's multi-chain capability provides developers with an efficient way to access fragmented data across multiple chains. Builders can specify their event handler to operate against a common schema. For Sablier, they could collect and transform data from various sources and aggregate it into a single PostgreSQL database. With all cross-chain data consolidated, Sablier could query this data via a unified GraphQL API instead of requesting the same data via multiple endpoints.  This streamlined their operations, making it easier to manage and utilize data from multiple blockchain networks.
 
-<img src="/images/blog-assets/case-study-sablier-2.png" alt="GraphQL Playground for Query Building" width="100%"/>
+<img src="/static/images/blog-assets/case-study-sablier-2.png" alt="GraphQL Playground for Query Building" width="100%"/>
 
 When indexing multi-chain, Envio's SDK offers two options:
 
 1. **Default Mode:** This mode preserves ordering across chains and ensures that events from all chains are ingested and processed in sequence. It is essential if you need to maintain the order across chains and are handling the same data from multiple chains.
 2. **Unordered Head Mode:** This mode indexes each chain quickly without preserving order across chains. It is useful if you are indexing at the head and do not want the slow block time of one chain to hinder the optimistic processing of events on other chains.
 
-<img src="/images/blog-assets/case-study-sablier-3.png" alt="Multi-chain Indexing Sync Status Progress bars" width="100%"/>
+<img src="/static/images/blog-assets/case-study-sablier-3.png" alt="Multi-chain Indexing Sync Status Progress bars" width="100%"/>
 
 For more information on Envio's multi-chain indexing capabilities, view our dev docs [here](/HyperIndex/Advanced/multichain-indexing).
 

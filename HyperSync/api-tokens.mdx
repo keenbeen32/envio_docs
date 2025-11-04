@@ -48,21 +48,21 @@ Copy and securely store your token in a safe location
 To use an API token, pass it as a `bearer_token` when creating a HyperSync client:
 
 <CodeGroup>
-```typescript icon="/icons/typescript-icon.png" title="TypeScript/JavaScript"
+```typescript icon="/static/icons/typescript-icon.png" title="TypeScript/JavaScript"
 const client = HypersyncClient.new({
   url: "https://eth.hypersync.xyz",
   bearerToken: process.env.HYPERSYNC_BEARER_TOKEN,
 });
 ```
 
-```python icon="/icons/python-icon.png" title="Python"
+```python icon="/static/icons/python-icon.png" title="Python"
 client = hypersync.HypersyncClient(hypersync.ClientConfig(
     url="https://eth.hypersync.xyz",
     bearer_token=os.environ.get("HYPERSYNC_BEARER_TOKEN")
 ))
 ```
 
-```rust icon="/icons/rust-icon.png" title="Rust"
+```rust icon="/static/icons/rust-icon.png" title="Rust"
 let client = Client::new(ClientConfig {
     bearer_token: Some(std::env::var("HYPERSYNC_BEARER_TOKEN").unwrap_or_default()),
     ..Default::default()

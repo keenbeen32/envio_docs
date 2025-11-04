@@ -31,7 +31,7 @@ Fetches logs for a specific event signature
 
 Returns every block and all associated transactions within the supplied block range.
 
-```python icon="/icons/python-icon.png" title="preset_query_blocks_and_transactions.py"
+```python icon="/static/icons/python-icon.png" title="preset_query_blocks_and_transactions.py"
 import hypersync
 import asyncio
 
@@ -53,7 +53,7 @@ Returns each block in the range along with only the transaction hashes.
 
 Fetches all logs emitted by the provided contract addresses in the given block range.
 
-```python icon="/icons/python-icon.png" title="preset_query_get_logs.py"
+```python icon="/static/icons/python-icon.png" title="preset_query_get_logs.py"
 logs_res = await client.get(
     hypersync.preset_query_get_logs(["0xYourContract"], 17_000_000, 17_000_050)
 )

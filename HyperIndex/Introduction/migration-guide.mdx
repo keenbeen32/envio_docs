@@ -81,7 +81,7 @@ npx envio init
 Take the following conversion as an example, where the `subgraph.yaml` file is converted to `config.yaml`. The comparison below is for the Uniswap V4 pool manager subgraph:
 
 **TheGraph - subgraph.yaml:**
-```yaml icon="/icons/yaml-icon.png" title="subgraph.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="subgraph.yaml"
 specVersion: 0.0.4
 description: Uniswap is a decentralized protocol for automated token exchange on Ethereum.
 repository: https://github.com/Uniswap/v4-subgraph
@@ -117,7 +117,7 @@ features:
 ```
 
 **HyperIndex - config.yaml:**
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 # yaml-language-server: $schema=./node_modules/envio/evm.schema.json
 name: uni-v4-indexer
 networks:
@@ -163,7 +163,7 @@ There are some subtle differences in the syntax:
 - Use [dynamic contract registration](/HyperIndex/Advanced/dynamic-contracts) to register contracts
 
 **TheGraph - eventHandler.ts:**
-```typescript icon="/icons/typescript-icon.png" title="eventHandler.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="eventHandler.ts"
 export function handleSubscription(event: SubscriptionEvent): void {
   const subscription = new Subscribe(event.transaction.hash + event.logIndex);
 
@@ -178,7 +178,7 @@ export function handleSubscription(event: SubscriptionEvent): void {
 ```
 
 **HyperIndex - eventHandler.ts:**
-```typescript icon="/icons/typescript-icon.png" title="eventHandler.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="eventHandler.ts"
 PoolManager.Subscription.handler( async (event, context) => {
   const entity = {
     id: event.transaction.hash + event.logIndex,

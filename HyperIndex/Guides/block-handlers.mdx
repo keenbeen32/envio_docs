@@ -11,7 +11,7 @@ Starting from `envio@2.29` we introduced `onBlock` API to be able to run logic o
 
 To get started, import the `onBlock` function from `generated` module and call it in one of your handler files.
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { onBlock } from "generated";
 
 onBlock(
@@ -65,7 +65,7 @@ The second argument is a handler function that receives the block object and the
 
 Currently there's no special API for multichain block handlers. Although using `forEach` is just as nice.
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { onBlock } from "generated";
 
 [
@@ -117,7 +117,7 @@ Here's the recipe for how to speed up your historical sync by increasing the int
 
 You can achieve this by registering multiple block handlers with the same handler, but different `startBlock`, `endBlock` and `interval` options.
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { onBlock } from "generated";
 
 [
@@ -166,7 +166,7 @@ We recommend exploring this approach together with [HyperSync](/HyperSync/overvi
 
 This is not an official feature, but a creative way to use block handlers. You can define a block handler with the `startBlock` and `endBlock` options equal to the start of the chain and use it to populate the database with the initial data.
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { onBlock } from "generated";
 
 onBlock(

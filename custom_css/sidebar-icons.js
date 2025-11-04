@@ -14,6 +14,7 @@
       'Guides': '≡',
       'Examples': '◦',
       'Hosting': '↑',
+      'Hosted Service': '↑',
       'Tutorials': '⌘',
       'Advanced': '⚙',
       'Troubleshoot': '⚠',

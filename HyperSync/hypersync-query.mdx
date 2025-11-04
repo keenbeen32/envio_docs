@@ -144,7 +144,7 @@ HyperSync supports searching from the head of the chain backwards, which is usef
 
 To use reverse search, add the `reverse: true` parameter to your stream call:
 
-```javascript icon="/icons/javascript-icon.png" title="reverse-search.js"
+```javascript icon="/static/icons/javascript-icon.png" title="reverse-search.js"
 // Example of reverse search to get recent transactions
 const receiver = await client.stream(query, { reverse: true });
 
@@ -172,7 +172,7 @@ A complete HyperSync query can include the following components:
 
 ### Core Query Parameters
 
-```rust icon="/icons/rust-icon.png" title="Query Structure"
+```rust icon="/static/icons/rust-icon.png" title="Query Structure"
 struct Query {
     /// The block to start the query from
     from_block: u64,
@@ -212,7 +212,7 @@ struct Query {
 
 #### Log Selection
 
-```rust icon="/icons/rust-icon.png" title="LogSelection"
+```rust icon="/static/icons/rust-icon.png" title="LogSelection"
 struct LogSelection {
     /// Contract addresses to match (empty = match all)
     address: Array<Address>,
@@ -226,7 +226,7 @@ struct LogSelection {
 
 #### Transaction Selection
 
-```rust icon="/icons/rust-icon.png" title="TransactionSelection"
+```rust icon="/static/icons/rust-icon.png" title="TransactionSelection"
 struct TransactionSelection {
     /// Sender addresses (empty = match all)
     /// Has AND relationship with 'to' field
@@ -252,7 +252,7 @@ struct TransactionSelection {
 
 #### Block Selection
 
-```rust icon="/icons/rust-icon.png" title="BlockSelection"
+```rust icon="/static/icons/rust-icon.png" title="BlockSelection"
 struct BlockSelection {
     /// Block hashes to match (empty = match all)
     hash: Array<Hash>,
@@ -264,7 +264,7 @@ struct BlockSelection {
 
 #### Trace Selection
 
-```rust icon="/icons/rust-icon.png" title="TraceSelection"
+```rust icon="/static/icons/rust-icon.png" title="TraceSelection"
 struct TraceSelection {
     /// Sender addresses (empty = match all)
     /// Has AND relationship with 'to' field
@@ -293,7 +293,7 @@ struct TraceSelection {
 
 #### Field Selection
 
-```rust icon="/icons/rust-icon.png" title="FieldSelection"
+```rust icon="/static/icons/rust-icon.png" title="FieldSelection"
 struct FieldSelection {
     /// Block fields to include in response
     block: Array<String>,
@@ -321,7 +321,7 @@ When specifying fields in your query, always use snake_case names (e.g., `block_
 
 ### Block Fields
 
-```python icon="/icons/python-icon.png" title="Block Fields"
+```python icon="/static/icons/python-icon.png" title="Block Fields"
 class BlockField(StrEnum):
     NUMBER = 'number'               # Block number
     HASH = 'hash'                   # Block hash
@@ -336,7 +336,7 @@ class BlockField(StrEnum):
 
 ### Transaction Fields
 
-```python icon="/icons/python-icon.png" title="Transaction Fields"
+```python icon="/static/icons/python-icon.png" title="Transaction Fields"
 class TransactionField(StrEnum):
     # Block-related fields
     BLOCK_HASH = 'block_hash'           # The Keccak 256-bit hash of the block
@@ -401,7 +401,7 @@ class TransactionField(StrEnum):
 
 ### Log Fields
 
-```python icon="/icons/python-icon.png" title="Log Fields"
+```python icon="/static/icons/python-icon.png" title="Log Fields"
 class LogField(StrEnum):
     # Log identification
     LOG_INDEX = 'log_index'             # Index of the log in the block
@@ -430,7 +430,7 @@ class LogField(StrEnum):
 
 ### Trace Fields
 
-```python icon="/icons/python-icon.png" title="Trace Fields"
+```python icon="/static/icons/python-icon.png" title="Trace Fields"
 class TraceField(StrEnum):
     # Trace identification
     TRANSACTION_HASH = 'transaction_hash'   # Hash of the transaction
@@ -478,7 +478,7 @@ For a complete list of all available fields, refer to the [HyperSync API Referen
 
 When you execute a HyperSync query, the response includes both metadata and the requested data:
 
-```rust icon="/icons/rust-icon.png" title="QueryResponse"
+```rust icon="/static/icons/rust-icon.png" title="QueryResponse"
 struct QueryResponse {
     /// Current height of the blockchain in HyperSync
     archive_height: Optional<u64>,
@@ -501,7 +501,7 @@ struct QueryResponse {
 
 The optional `rollback_guard` helps manage chain reorganizations:
 
-```rust icon="/icons/rust-icon.png" title="RollbackGuard"
+```rust icon="/static/icons/rust-icon.png" title="RollbackGuard"
 struct RollbackGuard {
     /// Last block scanned
     block_number: u64,

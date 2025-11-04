@@ -17,7 +17,7 @@ This optimization enables HyperIndex to efficiently preload entities used by han
 
 Currently, you need to explicitly enable the preloaded configuration in your [`config.yaml`](/HyperIndex/Guides/configuration-file) file. In the future, this will be enabled by default.
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 preload_handlers: true
 ```
 
@@ -46,7 +46,7 @@ This double execution pattern ensures that entities created by earlier events in
 
 Consider this common pattern of getting entities in event handlers:
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 ERC20.Transfer.handler(async ({ event, context }) => {
   const sender = await context.Account.get(event.params.from);
   const receiver = await context.Account.get(event.params.to);
@@ -64,7 +64,7 @@ For our example of 5,000 transfer events, this optimization reduces database rou
 
 You can further optimize performance by requesting multiple entities concurrently:
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 ERC20.Transfer.handler(async ({ event, context }) => {
   // Request sender and receiver concurrently for maximum efficiency
   const [sender, receiver] = await Promise.all([
@@ -81,7 +81,7 @@ This approach can reduce the database roundtrips to just 1 for the entire batch 
 
 Let's say you want to populate your indexer with offchain data:
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 ERC20.Transfer.handler(async ({ event, context }) => {
   // Without Preload: Blocking external calls
   const metadata = await fetch(
@@ -96,7 +96,7 @@ ERC20.Transfer.handler(async ({ event, context }) => {
 
 **With Preload Optimization:** Since handlers run **twice** for each event, making direct external calls can be problematic. The [Effect API](/HyperIndex/Advanced/effect-api) provides a solution. During the Preload Phase, it batches all external calls and runs them in parallel. Then during the Processing Phase, it runs the handlers sequentially, retrieving the already requested data from the in-memory store.
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 import { S, experimental_createEffect } from "envio";
 
 const fetchMetadata = experimental_createEffect(
@@ -167,7 +167,7 @@ Due to the optimistic nature of the Preload Phase, the Effect API may occasional
 This will disable the Preload Optimization for the external calls.
 </Note>
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 ERC20.Transfer.handler(async ({ event, context }) => {
   const sender = await context.Account.get(event.params.from);
 
@@ -191,7 +191,7 @@ ERC20.Transfer.handler(async ({ event, context }) => {
 
 The Preload Optimization for handlers was born from a concept we had before called [Loaders](/HyperIndex/Advanced/loaders). If you're using loaders, we recommend you to migrate to preload optimization by enabling it in the config and moving all your code to the handler.
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 // Before:
 ERC20.Transfer.handlerWithLoader({
   loader: async ({ event, context }) => {

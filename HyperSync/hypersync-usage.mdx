@@ -34,7 +34,7 @@ Queries are the heart of working with HyperSync. They allow you to filter for sp
 
 A basic HyperSync query contains:
 
-```python icon="/icons/python-icon.png"
+```python icon="/static/icons/python-icon.png"
 query = hypersync.Query(
     from_block=12345678,               # Required: Starting block number
     to_block=12345778,                 # Optional: Ending block number
@@ -54,7 +54,7 @@ query = hypersync.Query(
 
 Field selection allows you to specify exactly which data fields you want to retrieve. This improves performance by only fetching what you need:
 
-```python icon="/icons/python-icon.png"
+```python icon="/static/icons/python-icon.png"
 field_selection = hypersync.FieldSelection(
     # Block fields you want to retrieve
     block=[
@@ -97,7 +97,7 @@ For most use cases, you'll want to filter for specific logs, transactions, or tr
 
 #### Log Selection Example
 
-```python icon="/icons/python-icon.png"
+```python icon="/static/icons/python-icon.png"
 # Filter for Transfer events from USDC contract
 log_selection = hypersync.LogSelection(
     address=["0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"],  # USDC contract
@@ -109,7 +109,7 @@ log_selection = hypersync.LogSelection(
 
 #### Transaction Selection Example
 
-```python icon="/icons/python-icon.png"
+```python icon="/static/icons/python-icon.png"
 # Filter for transactions to the Uniswap V3 router
 tx_selection = hypersync.TransactionSelection(
     to=["0xE592427A0AEce92De3Edee1F18E0157C05861564"]  # Uniswap V3 Router
@@ -124,7 +124,7 @@ HyperSync provides multiple ways to process query results:
 
 Parquet is the recommended format for large data sets:
 
-```python icon="/icons/python-icon.png"
+```python icon="/static/icons/python-icon.png"
 # Configure output format
 config = hypersync.StreamConfig(
     hex_output=hypersync.HexOutput.PREFIXED,
@@ -139,7 +139,7 @@ await client.collect_parquet("data_directory", query, config)
 
 For smaller datasets or debugging:
 
-```python icon="/icons/python-icon.png"
+```python icon="/static/icons/python-icon.png"
 # Stream results to JSON
 await client.collect_json("output.json", query, config)
 ```
@@ -148,7 +148,7 @@ await client.collect_json("output.json", query, config)
 
 For immediate processing:
 
-```python icon="/icons/python-icon.png"
+```python icon="/static/icons/python-icon.png"
 # Process data directly
 async for result in client.stream(query, config):
     for log in result.logs:
@@ -162,7 +162,7 @@ async for result in client.stream(query, config):
 
 - **Use Appropriate Batch Sizes**: Adjust batch size based on your chain and use case:
 
-  ```python icon="/icons/python-icon.png"
+  ```python icon="/static/icons/python-icon.png"
   config = hypersync.ParquetConfig(
       path="data",
       hex_output=hypersync.HexOutput.PREFIXED,
@@ -179,7 +179,7 @@ async for result in client.stream(query, config):
 
 - **Paginate Large Queries**: HyperSync requests have a 5-second time limit. For large data sets, paginate results:
 
-  ```python icon="/icons/python-icon.png"
+  ```python icon="/static/icons/python-icon.png"
   current_block = start_block
   while current_block < end_block:
       query.from_block = current_block
@@ -197,7 +197,7 @@ async for result in client.stream(query, config):
 
 Here's a complete example that fetches all USDC Transfer events:
 
-```python icon="/icons/python-icon.png"
+```python icon="/static/icons/python-icon.png"
 import hypersync
 from hypersync import (
     LogSelection,
@@ -276,7 +276,7 @@ Event logs in Ethereum have the following structure:
 
 HyperSync's client libraries include a `Decoder` class that can parse these raw logs into structured data:
 
-```javascript icon="/icons/javascript-icon.png"
+```javascript icon="/static/icons/javascript-icon.png"
 // Create a decoder with event signatures
 const decoder = Decoder.fromSignatures([
   "Transfer(address indexed from, address indexed to, uint256 amount)",
@@ -313,7 +313,7 @@ Each parameter object contains:
 
 For example, to access parameters from a Transfer event:
 
-```javascript icon="/icons/javascript-icon.png"
+```javascript icon="/static/icons/javascript-icon.png"
 // Access indexed parameters (from, to)
 const from = decodedLog.indexed[0]?.val.toString();
 const to = decodedLog.indexed[1]?.val.toString();

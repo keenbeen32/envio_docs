@@ -28,7 +28,7 @@ Let's examine how specific elements from a real Uniswap V4 indexer translate int
 
 For a schema entity like this:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Pool {
   id: ID!
   chainId: BigInt!
@@ -47,7 +47,7 @@ The codegen process generates:
 
 1. **Type Definition** in `EntityModels.res`:
 
-```rescript icon="/icons/rescript-icon.png"
+```rescript icon="/static/icons/rescript-icon.png"
 type pool = {
   id: string,
   chainId: BigInt.t,
@@ -64,7 +64,7 @@ type pool = {
 
 2. **Constructor Function**:
 
-```rescript icon="/icons/rescript-icon.png"
+```rescript icon="/static/icons/rescript-icon.png"
 let makePool = (
   ~id: string,
   ~chainId: BigInt.t,
@@ -94,7 +94,7 @@ let makePool = (
 
 3. **Database Functions** in `Queries.res`:
 
-```rescript icon="/icons/rescript-icon.png"
+```rescript icon="/static/icons/rescript-icon.png"
 let getPoolById = (id: string): option<EntityModels.pool> => {
   // Database retrieval logic
 }
@@ -108,7 +108,7 @@ let savePool = (entity: EntityModels.pool): unit => {
 
 Given a contract event in `config.yaml`:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 contracts:
   - name: PoolManager
     handler: src/EventHandlers.ts
@@ -118,7 +118,7 @@ contracts:
 
 The codegen process generates handler wrappers like:
 
-```rescript icon="/icons/rescript-icon.png"
+```rescript icon="/static/icons/rescript-icon.png"
 // In Handlers.res
 let handlePoolManager_Swap = (
   ~blockHeader: Types.blockHeader,
@@ -160,7 +160,7 @@ let handlePoolManager_Swap = (
 
 Your config has multiple networks:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1 # Ethereum Mainnet
     # ...
@@ -172,7 +172,7 @@ networks:
 
 The generated code will include configuration parsing that handles all three networks:
 
-```rescript icon="/icons/rescript-icon.png"
+```rescript icon="/static/icons/rescript-icon.png"
 // In Config.res
 let networks = [
   {
@@ -238,7 +238,7 @@ Error messages containing `Config validation failed` typically mean there's an i
 
 For example, if you see an error about invalid network IDs, check that all network IDs in your config are valid:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1 # Valid Ethereum mainnet
   - id: 10 # Valid Optimism
@@ -256,7 +256,7 @@ Errors mentioning `Schema parsing error` point to issues in your GraphQL schema:
 
 For example, if you're using the `@index` directive as in your `Pool` entity's `numberOfSwaps` field, make sure it's correctly placed:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Pool {
   id: ID!
   numberOfSwaps: BigInt! @index # Correct placement of @index directive

@@ -27,7 +27,7 @@ We want to track token information (name, symbol, decimals) for every token invo
 
 The Uniswap V3 factory `PoolCreated` event only provides token addresses, not their metadata:
 
-```yaml icon="/icons/yaml-icon.png"
+```yaml icon="/static/icons/yaml-icon.png"
 PoolCreated(address indexed token0, address indexed token1, uint24 indexed fee, int24 tickSpacing, address pool)
 ```
 
@@ -62,7 +62,7 @@ When prompted, enter the Ethereum mainnet Uniswap V3 Factory address: `0x1F98431
 
 Then modify your configuration to focus only on the PoolCreated event:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: uniswap-v3-factory-token-indexer
 preload_handlers: true
 networks:
@@ -81,7 +81,7 @@ networks:
 <Step title="Define the Schema">
 Create a schema that captures both pool and token information:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Token {
   id: ID! # token address
   name: String!
@@ -113,7 +113,7 @@ Preload optimization makes your handlers run **twice**. So instead of direct RPC
 
 Learn how Preload Optimization works in a [dedicated guide](/HyperIndex/Advanced/preload-optimization). It might be a new mental model for you, but this is what can make indexing thousands of times faster.
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { UniswapV3Factory } from "generated";
 import { getTokenMetadata } from "./tokenMetadata";
 
@@ -183,7 +183,7 @@ This is where the magic happens. We need to:
 3. Handle edge cases like non-standard ERC20 implementations
 4. Cache results to avoid redundant calls
 
-```typescript icon="/icons/typescript-icon.png" title="tokenDetails.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="tokenDetails.ts"
 import { createPublicClient, http, hexToString } from "viem";
 import { mainnet } from "viem/chains";
 import { experimental_createEffect, S } from "envio";

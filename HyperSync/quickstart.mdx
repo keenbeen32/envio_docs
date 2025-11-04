@@ -49,7 +49,7 @@ node run-tui.js
 
 That's it! You're now streaming data directly from Ethereum mainnet through HyperSync! (TUI version below)
 
-![HyperSync in Action](/images/hypersync.gif)
+![HyperSync in Action](/static/images/hypersync.gif)
 
 ## Understanding the Code
 
@@ -57,7 +57,7 @@ Let's look at the core concepts in the example code:
 
 ### 1. Initialize the Client
 
-```javascript icon="/icons/javascript-icon.png"
+```javascript icon="/static/icons/javascript-icon.png"
 import { HypersyncClient } from "@envio-dev/hypersync-client";
 
 // Initialize Hypersync client
@@ -74,7 +74,7 @@ To connect to different networks, see the [Supported Networks](/HyperSync/hypers
 
 The heart of HyperSync is the query object, which defines what data you want to retrieve:
 
-```javascript icon="/icons/javascript-icon.png"
+```javascript icon="/static/icons/javascript-icon.png"
 let query = {
   fromBlock: 0, // Start block (0 = genesis)
   logs: [
@@ -100,7 +100,7 @@ let query = {
 
 ### 3. Stream and Process Results
 
-```javascript icon="/icons/javascript-icon.png"
+```javascript icon="/static/icons/javascript-icon.png"
 // Start streaming events
 const stream = await client.stream(query, {});
 
@@ -135,7 +135,7 @@ HyperSync lets you filter blockchain data in several ways:
 
 One of HyperSync's most powerful features is the ability to retrieve only the fields you need:
 
-```javascript icon="/icons/javascript-icon.png"
+```javascript icon="/static/icons/javascript-icon.png"
 fieldSelection: {
   // Block fields
   block: [BlockField.Number, BlockField.Timestamp],
@@ -165,7 +165,7 @@ HyperSync allows you to control how related data is joined:
 
 This example (from the quickstart repo) streams all Uniswap V3 events from the beginning of Ethereum:
 
-```javascript icon="/icons/javascript-icon.png"
+```javascript icon="/static/icons/javascript-icon.png"
 import { keccak256, toHex } from "viem";
 import {
   HypersyncClient,
@@ -225,7 +225,7 @@ main();
 
 HyperSync supports 70+ EVM-compatible networks. You can change networks by simply changing the client URL:
 
-```javascript icon="/icons/javascript-icon.png"
+```javascript icon="/static/icons/javascript-icon.png"
 // Ethereum Mainnet
 const client = HypersyncClient.new({ url: "http://eth.hypersync.xyz" });
 
@@ -283,7 +283,7 @@ You're now ready to build with HyperSync! Here are some resources for diving dee
 
 For development, you can use HyperSync without an API token. For production applications, you'll need to [get an API token](/HyperSync/api-tokens) and update your client initialization:
 
-```javascript icon="/icons/javascript-icon.png"
+```javascript icon="/static/icons/javascript-icon.png"
 const client = HypersyncClient.new({
   url: "http://eth.hypersync.xyz",
   bearerToken: "your-api-token-here",

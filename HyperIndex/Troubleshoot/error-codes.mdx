@@ -109,7 +109,7 @@ Envio error codes are categorized by their first digits:
 - See the [HyperSync Data Source](/HyperIndex/Advanced/hypersync) or [RPC Data Source](/HyperIndex/Advanced/rpc-sync) documentation
 - Example:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 network:
   network_id: 1
   rpc_config:
@@ -142,7 +142,7 @@ network:
 
 **Solution**: If providing an end block, ensure it's greater than the start block:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 start_block: 10000000
 end_block: 20000000 # Must be greater than start_block
 ```
@@ -187,7 +187,7 @@ end_block: 20000000 # Must be greater than start_block
 
 **Solution**: Add the `field` argument to your `@derivedFrom` directive:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type User {
   id: ID!
   orders: [Order!]! @derivedFrom(field: "user")
@@ -220,7 +220,7 @@ type User {
 
 **Solution**: Use non-nullable scalars in lists by adding `!` after the type:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 # Incorrect
 items: [String]
 
@@ -234,7 +234,7 @@ items: [String!]!
 
 **Solution**: Ensure inner list types are non-nullable:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 # Incorrect
 matrix: [[Int]]
 
@@ -312,7 +312,7 @@ matrix: [[Int!]!]!
 
 **Solution**: Add the `abi_file_path` property in your configuration for each contract:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 contracts:
   - name: MyContract
     abi_file_path: ./abis/MyContract.json

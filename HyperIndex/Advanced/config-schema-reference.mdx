@@ -33,7 +33,7 @@ Description of the project
 
 - **type**: `string | null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 description: Greeter indexer
 ```
 
@@ -43,7 +43,7 @@ Name of the project
 
 - **type**: `string`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: MyIndexer
 ```
 
@@ -57,7 +57,7 @@ Variants:
 - `1`: [EcosystemTag](#def-ecosystemtag)
 - `2`: `null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 ecosystem: evm
 ```
 
@@ -67,7 +67,7 @@ Custom path to schema.graphql file
 
 - **type**: `string | null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 schema: ./schema.graphql
 ```
 
@@ -77,7 +77,7 @@ Path where the generated directory will be placed. By default it's 'generated' r
 
 - **type**: `string | null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 output: ./generated
 ```
 
@@ -87,7 +87,7 @@ Global contract definitions that must contain all definitions except addresses. 
 
 - **type**: `array | null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 contracts:
   - name: Greeter
     handler: src/EventHandlers.ts
@@ -103,7 +103,7 @@ Configuration of the blockchain networks that the project is deployed on.
 - **items**: `object<Network>`
 - **items ref**: [Network](#def-network)
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     start_block: 0
@@ -118,7 +118,7 @@ A flag to indicate if the indexer should use a single queue for all chains or a 
 
 - **type**: `boolean | null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 unordered_multichain_mode: true
 ```
 
@@ -132,7 +132,7 @@ Variants:
 - `1`: [EventDecoder](#def-eventdecoder)
 - `2`: `null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 event_decoder: hypersync-client
 ```
 
@@ -142,7 +142,7 @@ A flag to indicate if the indexer should rollback to the last known valid block 
 
 - **type**: `boolean | null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 rollback_on_reorg: true
 ```
 
@@ -152,7 +152,7 @@ A flag to indicate if the indexer should save the full history of events. This i
 
 - **type**: `boolean | null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 save_full_history: false
 ```
 
@@ -166,7 +166,7 @@ Variants:
 - `1`: [FieldSelection](#def-fieldselection)
 - `2`: `null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 field_selection:
   transaction_fields:
     - hash
@@ -180,7 +180,7 @@ If true, the indexer will store the raw event data in the database. This is usef
 
 - **type**: `boolean | null`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 raw_events: true
 ```
 
@@ -207,7 +207,7 @@ Variants:
 - **type**: `enum (1 values)`
 - **allowed**: `evm`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 ecosystem: evm
 ```
 
@@ -222,7 +222,7 @@ Properties:
 - `handler`: `string` – The relative path to a file where handlers are registered for the given contract
 - `events`: `array<object<EventConfig>>` – A list of events that should be indexed on this contract
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 contracts:
   - name: Greeter
     handler: src/EventHandlers.ts
@@ -240,7 +240,7 @@ Properties:
 - `name`: `string | null` – Name of the event in the HyperIndex generated code. When ommitted, the event field will be used. Should be unique per contract
 - `field_selection`: `anyOf(object<FieldSelection> | null)` – Select the block and transaction fields to include in the specific event
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 contracts:
   - name: Greeter
     handler: src/EventHandlers.ts
@@ -264,7 +264,7 @@ Properties:
   - Available values:
 `parentHash`, `nonce`, `sha3Uncles`, `logsBloom`, `transactionsRoot`, `stateRoot`, `receiptsRoot`, `miner`, `difficulty`, `totalDifficulty`, `extraData`, `size`, `gasLimit`, `gasUsed`, `uncles`, `baseFeePerGas`, `blobGasUsed`, `excessBlobGas`, `parentBeaconBlockRoot`, `withdrawalsRoot`, `l1BlockNumber`, `sendCount`, `sendRoot`, `mixHash`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 events:
   - event: "Assigned(address indexed user, uint256 amount)"
     # can be within an event as shown here, or globally for all events
@@ -290,7 +290,7 @@ Properties:
 - `end_block`: `integer | null` – The block at which the indexer should terminate.
 - `contracts`: `array<object<NetworkContract_for_ContractConfig>>` – All the contracts that should be indexed on the given network
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     start_block: 0
@@ -315,7 +315,7 @@ Properties:
 - `fallback_stall_timeout`: `integer | null` – If a fallback RPC is provided, the amount of time in ms to wait before kicking off the next provider
 - `query_timeout_millis`: `integer | null` – How long to wait before cancelling an RPC request
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     rpc_config:
@@ -332,7 +332,7 @@ Variants:
 - `2`: [Rpc](#def-rpc)
 - `3`: `array<object<Rpc>>`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     rpc: https://eth.llamarpc.com
@@ -354,7 +354,7 @@ Properties:
 - `fallback_stall_timeout`: `integer | null` – If a fallback RPC is provided, the amount of time in ms to wait before kicking off the next provider
 - `query_timeout_millis`: `integer | null` – How long to wait before cancelling an RPC request
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     rpc:
@@ -378,7 +378,7 @@ Variants:
 Properties:
 - `url`: `string` – URL of the HyperSync endpoint (default: The most performant HyperSync endpoint for the network)
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     hypersync_config:
@@ -398,7 +398,7 @@ Properties:
 - `handler`: `string` – The relative path to a file where handlers are registered for the given contract
 - `events`: `array<object<EventConfig>>` – A list of events that should be indexed on this contract
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     start_block: 0
@@ -419,7 +419,7 @@ Variants:
 - `1`: `anyOf(string | integer)`
 - `2`: `array<anyOf(string | integer)>`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 networks:
   - id: 1
     contracts:
@@ -434,7 +434,7 @@ networks:
 - **type**: `enum (2 values)`
 - **allowed**: `viem`, `hypersync-client`
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 event_decoder: hypersync-client
 ```
 

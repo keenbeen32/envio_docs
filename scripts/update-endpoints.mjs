@@ -232,7 +232,7 @@ To get started, see our documentation or follow our quickstart [guide](/HyperInd
 
 ### Defining Network Configurations
 
-\`\`\`yaml icon="/icons/yaml-icon.png" title="config.yaml"
+\`\`\`yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: IndexerName # Specify indexer name
 description: Indexer Description # Include indexer description
 networks:
@@ -292,7 +292,7 @@ To use ${network.name}, define the RPC configuration in your network configurati
 You may need to adjust more parameters of the [RPC configuration](/HyperIndex/Advanced/rpc-sync) to support the specific RPC provider.
 </Callout>
 
-\`\`\`yaml icon="/icons/yaml-icon.png" title="config.yaml"
+\`\`\`yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: IndexerName # Specify indexer name
 description: Indexer Description # Include indexer description
 networks:
@@ -408,6 +408,7 @@ const generateMarkdownFiles = async () => {
 };
 
 // Function to ensure all groups have expanded property in correct order
+// Note: This preserves all page paths (e.g., "Showcase/showcase" should be in Showcase/ folder)
 const ensureAllGroupsExpanded = (tabs) => {
   tabs.forEach(tab => {
     if (tab.groups && Array.isArray(tab.groups)) {
@@ -421,6 +422,7 @@ const ensureAllGroupsExpanded = (tabs) => {
         const expandedValue = group.group === "Supported Networks" ? false : true;
         
         // Reorder properties: group, expanded, pages
+        // Note: pages array is preserved exactly as-is to maintain folder structure
         if (group.group && group.pages) {
           const { group: groupName, pages, ...rest } = group;
           const reorderedGroup = {

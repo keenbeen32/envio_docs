@@ -242,7 +242,7 @@ Common assertion patterns include:
 
 This example tests that when a `NewGreeting` event is processed, it correctly creates a new `User` entity:
 
-```typescript icon="/icons/typescript-icon.png" title="test.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="test.ts"
 it("A NewGreeting event creates a User entity", async () => {
   // Step 1: Initialize an empty mock database
   const mockDb = MockDb.createMockDb();
@@ -278,7 +278,7 @@ it("A NewGreeting event creates a User entity", async () => {
 
 This example tests that when the same user sends multiple greetings, the counter increments correctly:
 
-```typescript icon="/icons/typescript-icon.png" title="test.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="test.ts"
 it("2 Greetings from the same users results in that user having a greeter count of 2", async () => {
   // Step 1: Initialize the mock database
   const mockDb = MockDb.createMockDb();
@@ -343,7 +343,7 @@ pnpm codegen
 <Step title="Check your imports">
 Make sure you're importing the correct files
 
-```typescript icon="/icons/typescript-icon.png" title="test.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="test.ts"
 import assert from "assert";
 import { UserEntity, TestHelpers } from "generated";
 const { MockDb, Greeter, Addresses } = TestHelpers;

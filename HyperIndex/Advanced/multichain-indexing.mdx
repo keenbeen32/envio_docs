@@ -30,7 +30,7 @@ For a comprehensive, production-ready example of multichain indexing, we recomme
 - Demonstrates best practices for high-performance multichain indexing
 - Provides a complete, production-grade implementation you can study and adapt
 
-<img src="/images/v4.gif" alt="V4 Indexer Demo" width="100%"/>
+<img src="/static/images/v4.gif" alt="V4 Indexer Demo" width="100%"/>
 
 The Uniswap V4 indexer showcases how to effectively structure a multichain indexer for a complex DeFi protocol, handling high volumes of data across multiple networks while maintaining performance and reliability.
 
@@ -42,7 +42,7 @@ The `config.yaml` file for multichain indexing contains three key sections:
 2. **Network-specific configurations** - Specify chain IDs and starting blocks
 3. **Contract instances** - Reference global contracts with network-specific addresses
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 # Example structure (simplified)
 contracts:
   - name: ExampleContract
@@ -102,7 +102,7 @@ This mode is ideal for most applications, especially when:
 
 In your config.yaml:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 unordered_multichain_mode: true
 networks: ...
 ```

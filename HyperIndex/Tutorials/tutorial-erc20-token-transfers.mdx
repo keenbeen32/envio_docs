@@ -46,13 +46,13 @@ pnpx envio init
 <Step title="Name your indexer">
 We'll use "usdc-base-transfer-indexer" in this example:
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-2.png" alt="Naming your indexer" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-2.png" alt="Naming your indexer" width="100%"/>
 </Step>
 
 <Step title="Choose your language">
 Choose your preferred language (TypeScript, JavaScript, or ReScript):
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-3.png" alt="Selecting TypeScript" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-3.png" alt="Selecting TypeScript" width="100%"/>
 </Step>
 
 </Steps>
@@ -80,7 +80,7 @@ Select the `Transfer` event:
 - Navigate using arrow keys (↑↓)
 - Press spacebar to select the event
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-4.png" alt="Selecting Transfer event" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-4.png" alt="Selecting Transfer event" width="100%"/>
 
 <Tip>
 You can select multiple events to index simultaneously if needed.
@@ -90,7 +90,7 @@ You can select multiple events to index simultaneously if needed.
 <Step title="Finish">
 When finished adding contracts, select **I'm finished**
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-5.png" alt="Completing contract import" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-5.png" alt="Completing contract import" width="100%"/>
 </Step>
 
 </Steps>
@@ -139,7 +139,7 @@ This configuration file defines:
 - Contract address and ABI details
 - Events to track (Transfer)
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-6.png" alt="Config YAML file" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-6.png" alt="Config YAML file" width="100%"/>
 </Step>
 
 <Step title="schema.graphql">
@@ -149,7 +149,7 @@ This schema defines the data structures for the Transfer event:
 - Field types for sender, receiver, and amount
 - Any relationships between entities
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-7.png" alt="GraphQL schema file" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-7.png" alt="GraphQL schema file" width="100%"/>
 </Step>
 
 <Step title="src/EventHandlers.*">
@@ -159,7 +159,7 @@ This file contains the business logic for processing events:
 - Data transformation and storage logic
 - Entity creation and relationship management
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-8.png" alt="Event handlers file" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-8.png" alt="Event handlers file" width="100%"/>
 </Step>
 
 </Steps>
@@ -174,7 +174,7 @@ Now you can interact with your indexed USDC transfer data:
 1. Open Hasura at [http://localhost:8080](http://localhost:8080)
 2. When prompted, enter the admin password: `testing`
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-9.png" alt="Hasura login" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-9.png" alt="Hasura login" width="100%"/>
 </Step>
 
 <Step title="Monitor indexing progress">
@@ -182,7 +182,7 @@ Now you can interact with your indexed USDC transfer data:
 2. Find the `_events_sync_state` table to check indexing progress
 3. Observe which blocks are currently being processed
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-10.png" alt="Indexing progress" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-10.png" alt="Indexing progress" width="100%"/>
 
 <Note>
 Thanks to Envio's [HyperSync](/HyperSync/overview), you can index millions of USDC transfers in just minutes rather than hours or days with traditional methods.
@@ -195,7 +195,7 @@ Thanks to Envio's [HyperSync](/HyperSync/overview), you can index millions of US
 
 Here's an example query to fetch the 10 largest USDC transfers:
 
-```graphql icon="/icons/graphql-icon.png" title="Query Example"
+```graphql icon="/static/icons/graphql-icon.png" title="Query Example"
 query LargestTransfers {
   FiatTokenV2_2_Transfer(limit: 10, order_by: { value: desc }) {
     from
@@ -208,7 +208,7 @@ query LargestTransfers {
 
 3. Click the **Play** button to execute your query
 
-<img src="/images/docs-assets/tutorial-base-erc20-transfer-11.png" alt="Query results" width="100%"/>
+<img src="/static/images/docs-assets/tutorial-base-erc20-transfer-11.png" alt="Query results" width="100%"/>
 </Step>
 
 </Steps>

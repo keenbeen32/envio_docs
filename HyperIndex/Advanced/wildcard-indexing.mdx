@@ -14,7 +14,7 @@ For the [RPC](/HyperIndex/Advanced/rpc-sync) data source support added in the `v
 
 As an example, let's say we want to index all ERC20 `Transfer` events. Start with a [`config.yaml`](/HyperIndex/Guides/configuration-file) file:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: transefer-indexer
 networks:
   - id: 1
@@ -28,7 +28,7 @@ networks:
 
 Let's also define some entities in [`schema.graphql`](/HyperIndex/Guides/schema-file) file, so our handlers can store the processed data:
 
-```graphql icon="/icons/graphql-icon.png" title="schema.graphql"
+```graphql icon="/static/icons/graphql-icon.png" title="schema.graphql"
 type Transfer {
   id: ID!
   from: String!
@@ -38,7 +38,7 @@ type Transfer {
 
 And the last bit is to register an event handler in the `src/EventHandlers.ts`. Note how we pass the `wildcard: true` option to enable wildcard indexing:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { ERC20 } from "generated";
 
 ERC20.Transfer.handler(
@@ -63,7 +63,7 @@ When you register an event handler or a contract register you can provide the `e
 
 Let's say you only want to index `Mint` events where the `from` address is equal to `ZERO_ADDRESS`:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { ERC20 } from "generated";
 
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
@@ -80,7 +80,7 @@ ERC20.Transfer.handler(
 
 If you want to index both `Mint` and `Burn` events you can provide multiple filters as an array. Also, every parameter can accept an array to filter by multiple possible values. We'll use it to filter by a group of whitelisted addresses in the example below:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { ERC20 } from "generated";
 
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
@@ -109,7 +109,7 @@ ERC20.Transfer.handler(
 
 For [Multichain Indexers](/HyperIndex/Guides/multichain-indexing) you can pass a function to `eventFilters` and use `chainId` to filter by different values per network:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { ERC20 } from "generated";
 
 const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
@@ -142,7 +142,7 @@ Besides `chainId` you can also access the `addresses` value to filter by.
 
 For example, if you have a `Safe` contract, you can index all ERC20 transfers sent specifically to/from your `Safe` contracts. The event filter gets addresses belonging to the contract, so we need to define the `Transfer` event on the `Safe` contract:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: locker
 networks:
   - id: 1
@@ -158,7 +158,7 @@ networks:
           - 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
 ```
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { Safe } from "generated";
 
 Safe.Transfer.handler(async ({ event, context }) => {}, {
@@ -169,7 +169,7 @@ Safe.Transfer.handler(async ({ event, context }) => {}, {
 
 This example is not much different from using a `WHITELISTED_ADDRESSES` constant, but this becomes much more powerful when the `Safe` contract addresses are [registered dynamically](/HyperIndex/Advanced/dynamic-contracts) by a factory contract:
 
-```yaml icon="/icons/yaml-icon.png" title="config.yaml"
+```yaml icon="/static/icons/yaml-icon.png" title="config.yaml"
 name: locker
 networks:
   - id: 1
@@ -187,7 +187,7 @@ networks:
           - event: Transfer(address indexed from, address indexed to, uint256 value)
 ```
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { SafeRegistry, Safe } from "generated";
 
 SafeRegistry.NewSafe.contractRegister(async ({ event, context }) => {
@@ -204,7 +204,7 @@ Safe.Transfer.handler(async ({ event, context }) => {}, {
 
 After you got all ERC20 Transfers relevant to your contracts, you can additionally filter them in the handler. For example, to get only `USDC` transfers:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { Safe } from "generated";
 
 const USDC_ADDRESS = {
@@ -234,7 +234,7 @@ Safe.Transfer.handler(
 
 The same `eventFilters` can be applied to `contractRegister` and `handlerWithLoader` APIs. Here is an example where we only register Uniswap pools that contain DAI token:
 
-```typescript icon="/icons/typescript-icon.png" title="EventHandlers.ts"
+```typescript icon="/static/icons/typescript-icon.png" title="EventHandlers.ts"
 import { UniV3Factory } from "generated";
 
 const DAI_ADDRESS = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
@@ -252,7 +252,7 @@ UniV3Factory.PoolCreated.contractRegister(
 
 For `handlerWithLoader` API simply add `wildcard` or `eventFilters` options to the single argument object:
 
-```typescript icon="/icons/typescript-icon.png"
+```typescript icon="/static/icons/typescript-icon.png"
 ERC20.Transfer.handlerWithLoader({
   loader: async ({ event, context }) => {},
   handler: async ({ event, context }) => {},
